@@ -37,7 +37,7 @@ export default function Home() {
       repeat: Infinity,
       ease: "easeInOut"
     }
-  }
+  } as const
 
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden">
