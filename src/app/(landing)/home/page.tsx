@@ -261,42 +261,69 @@ export default function HomePage() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="relative order-1 lg:order-2"
+                    className="relative order-1 lg:order-2 flex justify-center perspective-1000"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-[2rem] blur-2xl opacity-20 transform rotate-3 scale-105 group-hover:rotate-6 transition-transform duration-700"></div>
-                    <div className="bg-background aspect-[4/3] rounded-[2rem] shadow-2xl flex items-center justify-center text-muted-foreground border-8 border-white dark:border-zinc-800 relative z-10 overflow-hidden group cursor-pointer">
-                        <video 
-                            id="transformation-video"
-                            src="/videos/person1.mp4" 
-                            autoPlay 
-                            muted 
-                            loop 
-                            playsInline
-                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500"></div>
-                        
-                        {/* Lighting effect on hover */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/0 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                    {/* Organic Blob Background 1 */}
+                    <motion.div 
+                        animate={{ 
+                            rotate: [0, 360],
+                            scale: [1, 1.1, 1], 
+                            borderRadius: ["30% 70% 70% 30% / 30% 30% 70% 70%", "60% 40% 30% 70% / 60% 30% 70% 40%", "30% 70% 70% 30% / 30% 30% 70% 70%"] 
+                        }}
+                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                        className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-green-400/30 blur-2xl w-full max-w-[300px] mx-auto h-full -z-10"
+                    />
+                    
+                    {/* Organic Blob Background 2 (Counter-rotating) */}
+                     <motion.div 
+                        animate={{ 
+                            rotate: [360, 0],
+                            scale: [1.1, 1, 1.1],
+                            borderRadius: ["50% 50% 50% 50% / 50% 50% 50% 50%", "40% 60% 70% 30% / 40% 50% 60% 50%", "50% 50% 50% 50% / 50% 50% 50% 50%"]
+                        }}
+                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                        className="absolute inset-0 bg-gradient-to-bl from-secondary/30 to-yellow-200/30 blur-2xl w-full max-w-[320px] mx-auto h-[110%] -top-[5%] -z-10"
+                    />
 
-                        <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white text-center translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                            <motion.div 
-                                initial={{ y: 20, opacity: 0 }}
-                                whileInView={{ y: 0, opacity: 1 }}
-                                transition={{ delay: 0.5 }}
-                            >
-                                <p className="font-extrabold text-2xl mb-1 text-primary drop-shadow-md group-hover:text-yellow-400 transition-colors duration-300">Join the Circle</p>
-                                <p className="text-lg font-medium opacity-95 group-hover:opacity-100">Change your life today</p>
-                            </motion.div>
-                        </div>
-                        
-                        {/* Play button overlay that fades out */}
-                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/40 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 shadow-lg shadow-black/20">
-                                <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[22px] border-l-white border-b-[12px] border-b-transparent ml-1"></div>
+                    {/* Main Video Container with Organic Shape */}
+                    <motion.div 
+                        whileHover={{ scale: 1.02 }}
+                        className="relative w-full max-w-xs mx-auto z-10 group"
+                    >
+                         {/* Border Gradient Ring */}
+                         <div className="absolute -inset-1 bg-gradient-to-br from-primary via-white to-secondary rounded-[3rem] opacity-70 blur-sm group-hover:opacity-100 transition-opacity duration-500"></div>
+                         
+                        <div className="bg-black aspect-[9/16] rounded-[3rem] shadow-2xl relative overflow-hidden border-4 border-white/50 backdrop-blur-sm">
+                            <video 
+                                id="transformation-video"
+                                src="/videos/person1.mp4" 
+                                autoPlay 
+                                muted 
+                                loop 
+                                playsInline
+                                className="absolute inset-0 w-full h-full object-fill opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                            />
+                            
+                            {/* Overlay Vignette */}
+                            <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/80"></div>
+                            
+                            {/* Animated Bottom Content */}
+                            <div className="absolute bottom-10 left-0 right-0 p-6 text-center transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                <motion.div 
+                                    initial={{ y: 20, opacity: 0 }}
+                                    whileInView={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: 0.5 }}
+                                >
+                                    <h3 className="font-extrabold text-3xl mb-2 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                                        Join the <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-300">Circle</span>
+                                    </h3>
+                                    <p className="text-white/90 font-medium tracking-wide bg-black/20 backdrop-blur-md py-2 px-4 rounded-full inline-block text-sm border border-white/10">
+                                        Rewrite Your Story
+                                    </p>
+                                </motion.div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </motion.div>
             </div>
         </section>
