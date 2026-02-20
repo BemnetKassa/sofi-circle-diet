@@ -5,6 +5,7 @@ import { Users, Activity, CreditCard, ArrowUpRight } from "lucide-react"
 import { StatCard } from "@/components/dashboard/stat-card"
 import { AdminRecentSignups } from "@/components/dashboard/admin-recent-signups"
 import { AdminQuickActions } from "@/components/dashboard/admin-quick-actions"
+import Link from "next/link"
 
 export default function AdminDashboard() {
   const stats = [
@@ -30,11 +31,13 @@ export default function AdminDashboard() {
             <p className="text-muted-foreground mt-2 text-lg font-medium">Monitoring system health and user requests.</p>
         </div>
         <div className="flex gap-4">
-            <Button variant="outline" className="rounded-full px-6 font-bold shadow-sm hover:bg-secondary/10 transition-all">
-                System Audit
+            <Button variant="outline" className="rounded-full px-6 font-bold shadow-sm hover:bg-secondary/10 transition-all border-border/60" asChild>
+                <Link href="/admin/settings">System Audit</Link>
             </Button>
-            <Button className="rounded-full px-6 font-bold shadow-lg shadow-primary/20 hover:-translate-y-0.5 transition-all">
-                <ArrowUpRight className="mr-2 h-4 w-4" /> Download Report
+            <Button className="rounded-full px-6 font-bold shadow-lg shadow-primary/20 hover:-translate-y-0.5 transition-all" asChild>
+                <Link href="/admin/reports">
+                    <ArrowUpRight className="mr-2 h-4 w-4" /> View Analytics
+                </Link>
             </Button>
         </div>
       </div>
