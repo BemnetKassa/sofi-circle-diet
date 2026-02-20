@@ -1,4 +1,3 @@
-
 import Link from "next/link"
 import { Facebook, Instagram, Twitter, Mail, MapPin } from "lucide-react"
 
@@ -32,6 +31,7 @@ export function Footer() {
               <ul className="space-y-4">
                   {[
                       { l: "Home", h: "/home" },
+                      { l: "About", h: "/about" },
                       { l: "How It Works", h: "/how-it-works" },
                       { l: "Pricing", h: "/pricing" },
                       { l: "Contact", h: "/contact" }
@@ -62,7 +62,7 @@ export function Footer() {
       </div>
       
       <div className="container mx-auto mt-16 pt-8 border-t border-white/5 text-center text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p>© {new Date().getFullYear()} Sofi Circle Diet. All rights reserved.</p>
+        <p>Â© {new Date().getFullYear()} Sofi Circle Diet. All rights reserved.</p>
         <div className="flex gap-6">
             <span className="hover:text-gray-300 cursor-pointer transition-colors">Privacy Policy</span>
             <span className="hover:text-gray-300 cursor-pointer transition-colors">Terms of Service</span>
@@ -71,4 +71,3 @@ export function Footer() {
     </footer>
   )
 }
-
