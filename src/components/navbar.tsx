@@ -2,7 +2,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
@@ -75,28 +75,30 @@ export function Navbar() {
         </button>
 
         {/* Mobile Nav Overlay */}
-        {isOpen && (
-            <motion.div 
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="absolute top-0 left-0 w-full h-screen bg-background flex flex-col items-center justify-center gap-8 md:hidden z-40"
-            >
-                {links.map((link) => (
-                    <Link 
-                        key={link.href} 
-                        href={link.href}
-                        onClick={() => setIsOpen(false)}
-                        className={`text-2xl font-bold ${isActive(link.href) ? "text-primary" : "text-foreground"}`}
-                    >
-                        {link.label}
-                    </Link>
-                ))}
-                 <Button asChild className="rounded-full px-8 py-6 text-lg shadow-xl shadow-primary/20">
-                    <Link href="/get-plan" onClick={() => setIsOpen(false)}>Get My Meal Plan</Link>
-                 </Button>
-            </motion.div>
-        )}
+        <AnimatePresence>
+            {isOpen && (
+                <motion.div 
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    className="absolute top-0 left-0 w-full h-screen bg-background flex flex-col items-center justify-center gap-8 md:hidden z-40"
+                >
+                    {links.map((link) => (
+                        <Link 
+                            key={link.href} 
+                            href={link.href}
+                            onClick={() => setIsOpen(false)}
+                            className={`text-2xl font-bold ${isActive(link.href) ? "text-primary" : "text-foreground"}`}
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
+                    <Button asChild className="rounded-full px-8 py-6 text-lg shadow-xl shadow-primary/20">
+                        <Link href="/get-plan" onClick={() => setIsOpen(false)}>Get My Meal Plan</Link>
+                    </Button>
+                </motion.div>
+            )}
+        </AnimatePresence>
       </div>
     </motion.header>
   )
