@@ -65,15 +65,15 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="relative overflow-hidden">
              {/* Mobile Background Image */}
-             <div className="absolute inset-0 lg:hidden z-0">
+             <div className="absolute inset-0 lg:hidden z-0 overflow-hidden">
                 <Image 
                     src="/pictures/sofi1.png" 
                     alt="Background" 
                     fill 
-                    className="object-cover opacity-25" 
+                    className="object-cover object-[center_20%] opacity-20" 
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/60 to-background"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/10 to-background"></div>
              </div>
 
             <div className="py-20 md:py-32 px-6 max-w-7xl mx-auto relative grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
