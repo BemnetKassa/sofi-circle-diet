@@ -24,7 +24,7 @@ export default function HomePage() {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { type: "spring", stiffness: 50 }
+      transition: { type: "spring" as const, stiffness: 50 }
     },
   }
 
@@ -33,9 +33,9 @@ export default function HomePage() {
     transition: {
       duration: 3,
       repeat: Infinity,
-      ease: "easeInOut"
+      ease: "easeInOut" as const
     }
-  } as const
+  }
 
   return (
     <div className="flex flex-col overflow-x-hidden">
@@ -233,8 +233,8 @@ export default function HomePage() {
                         <Sparkles className="w-4 h-4" /> Life transformation
                     </div>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-                        Join the <span className="text-primary">Circle</span> &<br/>
-                        <span className="text-secondary relative inline-block">
+                        Join the <span className="text-primary">Circle</span> &
+                        <span className="text-secondary relative ">
                             Change Your Life
                             <svg className="absolute w-full h-3 -bottom-1 left-0 text-secondary opacity-40" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" /></svg>
                         </span>
@@ -253,7 +253,11 @@ export default function HomePage() {
                         className="order-1 lg:order-1 relative flex justify-center"
                     >
                          {/* Video without fancy frame */}
-                        <div className="relative w-full max-w-sm mx-auto z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                        <motion.div 
+                            whileHover={{ scale: 1.2 }}
+                            transition={{ duration: 0.3 }}
+                            className="relative w-full max-w-md mx-auto z-10 rounded-2xl overflow-hidden shadow-2xl border-2 border-white cursor-pointer"
+                        >
                             <video 
                                 id="transformation-video"
                                 src="/videos/person1.mp4" 
@@ -263,7 +267,7 @@ export default function HomePage() {
                                 playsInline
                                 className="block w-full h-auto object-cover"
                             />
-                        </div>
+                        </motion.div>
                         {/* Decorative background for video */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[80%] bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full blur-3xl -z-10"></div>
                     </motion.div>
