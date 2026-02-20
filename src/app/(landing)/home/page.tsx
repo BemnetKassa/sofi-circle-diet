@@ -281,17 +281,23 @@ export default function HomePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 px-6 relative overflow-hidden flex items-center justify-center bg-primary text-primary-foreground">
-            {/* Background Animations */}
-            <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
+        <section className="py-24 px-6 relative overflow-hidden flex items-center justify-center text-white isolate">
+            {/* Background Color Layer */}
+            <div className="absolute inset-0 bg-primary -z-30"></div>
+
+            {/* Background Animations (Testimonies) */}
+            <div className="absolute inset-0 py-8 z-0 opacity-100 flex flex-col justify-center">
                <Testimonies />
             </div>
 
-            {/* Gradient Blobs */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white opacity-10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary opacity-30 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+            {/* Overlay to ensure text readability */}
+            <div className="absolute inset-0 bg-primary/80 backdrop-blur-[2px] -z-10"></div>
             
-            <div className="container mx-auto text-center relative z-10 max-w-4xl">
+            {/* Gradient Blobs */}
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white opacity-10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none -z-20"></div>
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary opacity-20 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3 pointer-events-none -z-20"></div>
+            
+            <div className="container mx-auto text-center relative z-20 max-w-4xl">
                 <h2 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">Ready to Change Your Life?</h2>
                 <p className="text-xl md:text-2xl opacity-90 mb-10 max-w-2xl mx-auto">Join hundreds of others in Ethiopia who found their path to health with Sofi Circle Diet.</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

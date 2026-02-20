@@ -42,29 +42,29 @@ export function Testimonies() {
   const duplicatedTestimonies = [...testimonies, ...testimonies, ...testimonies, ...testimonies];
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none select-none opacity-20 w-screen">
+    <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none select-none w-screen">
       <motion.div 
-          className="flex gap-8 px-4 min-w-max"
+          className="flex gap-6 px-4 min-w-max"
           animate={{ x: [0, "-50%"] }}
           transition={{ 
-              duration: 60,
+              duration: 80, // Slower for better readability
               repeat: Infinity,
               ease: "linear"
           }}
       >
           {duplicatedTestimonies.map((t, i) => (
-              <div key={i} className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl w-[350px] flex-shrink-0 border border-white/10 shadow-lg">
+              <div key={i} className="bg-white/10 backdrop-blur-md p-6 rounded-2xl w-[320px] flex-shrink-0 border border-white/20 shadow-xl opacity-80 hover:opacity-100 transition-opacity">
                   <div className="flex gap-1 mb-3">
-                      {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
+                      {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-secondary text-secondary" />)}
                   </div>
-                  <p className="text-white text-lg font-medium mb-4 whitespace-normal line-clamp-3">"{t.text}"</p>
+                  <p className="text-white font-medium mb-4 whitespace-normal line-clamp-3 leading-relaxed drop-shadow-sm">"{t.text}"</p>
                   <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-white font-bold border border-white/20 text-sm">
+                      <div className="w-10 h-10 rounded-full bg-secondary text-secondary-foreground flex items-center justify-center font-bold text-sm shadow-md">
                           {t.name.charAt(0)}
                       </div>
                       <div className="text-left">
-                          <p className="font-bold text-white text-sm">{t.name}</p>
-                          <p className="text-white/60 text-xs">{t.location}</p>
+                          <p className="font-bold text-white text-sm drop-shadow-md">{t.name}</p>
+                          <p className="text-white/80 text-xs font-medium">{t.location}</p>
                       </div>
                   </div>
               </div>

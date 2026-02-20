@@ -52,7 +52,7 @@ export default function PricingPage() {
                 className="text-center mb-16 space-y-6"
             >
                 <motion.div variants={itemVariants} className="inline-block relative">
-                    <span className="relative flex items-center gap-2 bg-secondary/20 text-secondary-foreground text-sm font-bold px-4 py-2 rounded-full border border-secondary shadow-sm mx-auto w-fit">
+                    <span className="relative flex items-center gap-2 mt-4 bg-secondary/20 text-secondary-foreground text-sm font-bold px-4 py-2 rounded-full border border-secondary shadow-sm mx-auto w-fit">
                         <Sparkles className="w-4 h-4 fill-secondary" /> Simple Pricing, No Hidden Fees
                     </span>
                 </motion.div>
