@@ -30,6 +30,7 @@ const formSchema = z.object({
   firstName: z.string().min(2, "First name is required"),
   lastName: z.string().min(2, "Last name is required"),
   email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
   age: z.string().refine((val) => !isNaN(Number(val)) && Number(val) > 0, {
     message: "Age must be a valid number",
   }),
@@ -80,7 +81,7 @@ export default function GetPlanPage() {
   const nextStep = async () => {
     let isValid = false
     if (step === 1) {
-      isValid = await trigger(["firstName", "lastName", "email", "age", "gender"])
+      isValid = await trigger(["firstName", "lastName", "email", "password", "age", "gender"])
     } else if (step === 2) {
       isValid = await trigger(["height", "weight", "goal", "dietaryPreferences", "allergies", "budget"])
     }
@@ -298,6 +299,12 @@ export default function GetPlanPage() {
                         <Label htmlFor="email" className="text-sm font-semibold">Email Address</Label>
                         <Input id="email" type="email" {...register("email")} placeholder="you@example.com" className="bg-background/50 focus:bg-background transition-colors" />
                         {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+                        </div>
+
+                        <div className="grid gap-2">
+                            <Label htmlFor="password" className="text-sm font-semibold">Create Password</Label>
+                            <Input id="password" type="password" {...register("password")} placeholder="••••••••" className="bg-background/50 focus:bg-background transition-colors" />
+                            {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>}
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-5">
