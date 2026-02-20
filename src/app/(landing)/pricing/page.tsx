@@ -88,7 +88,7 @@ export default function PricingPage() {
                     </div>
                     
                     <div className="mb-8 items-end flex gap-2">
-                        <span className="text-5xl font-extrabold tracking-tight">499 ETB</span>
+                        <span className="text-5xl font-extrabold tracking-tight">4000 ETB</span>
                         <span className="text-muted-foreground mb-2">/ one-time</span>
                     </div>
 
@@ -136,7 +136,7 @@ export default function PricingPage() {
                         </div>
                         
                         <div className="mb-8 items-end flex gap-2 relative z-10">
-                            <span className="text-6xl font-extrabold tracking-tight text-foreground">899 ETB</span>
+                            <span className="text-6xl font-extrabold tracking-tight text-foreground">4999 ETB</span>
                             <span className="text-muted-foreground mb-2">/ one-time</span>
                         </div>
 
