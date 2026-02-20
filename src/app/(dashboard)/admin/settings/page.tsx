@@ -15,30 +15,6 @@ import {
     Trash2, 
     Key, 
     Laptop, 
-    Database 
-} from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-
-import { 
-    Settings, 
-    User, 
-    Bell, 
-    Shield, 
-    CreditCard, 
-    Mail, 
-    Globe, 
-    Smartphone, 
-    Moon, 
-    CheckCircle2, 
-    Save, 
-    Trash2, 
-    Key, 
-    Laptop, 
     Database,
     BadgeCheck,
     BarChart3,
@@ -54,6 +30,7 @@ import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import Link from "next/link"
 
 const settingsTabs = [
     { id: "profile", label: "Profile", icon: User },
@@ -245,47 +222,6 @@ export default function AdminSettingsPage() {
                             </Link>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-                     {/* Security Summary */}
-                     <Card className="border-border/50 shadow-md">
-                        <CardHeader>
-                            <CardTitle className="text-lg font-black tracking-tight">Login Security</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-4 pt-0">
-                             <div className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20">
-                                <div className="flex items-center gap-2">
-                                    <Smartphone className="w-4 h-4 text-emerald-500" />
-                                    <span className="text-xs font-bold text-foreground tracking-tight">2FA Enabled</span>
-                                </div>
-                                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                             </div>
-                             <div className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20">
-                                <div className="flex items-center gap-2 text-muted-foreground">
-                                    <Key className="w-4 h-4" />
-                                    <span className="text-xs font-bold tracking-tight">Last changed 2d ago</span>
-                                </div>
-                                <Button variant="ghost" size="sm" className="h-6 px-2 text-[10px] font-black uppercase tracking-widest text-primary hover:bg-primary/5">Update</Button>
-                             </div>
-                        </CardContent>
-                     </Card>
-
-                     {/* Danger Zone */}
-                     <Card className="border-rose-100 shadow-md bg-rose-50/50">
-                        <CardHeader>
-                            <CardTitle className="text-lg font-black tracking-tight text-rose-700">Danger Zone</CardTitle>
-                            <CardDescription className="text-xs font-bold text-rose-600/70">Irreversible actions for your workspace.</CardDescription>
-                        </CardHeader>
-                        <CardContent className="pt-0">
-                             <Button variant="outline" className="w-full border-rose-200 text-rose-600 hover:bg-rose-100 hover:border-rose-300 font-bold gap-2 rounded-xl">
-                                <Trash2 className="w-4 h-4" /> Deactivate Account
-                             </Button>
-                        </CardContent>
-                     </Card>
                 </div>
             </div>
         </div>

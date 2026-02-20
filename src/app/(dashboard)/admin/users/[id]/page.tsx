@@ -13,7 +13,9 @@ import {
     ShieldCheck, 
     ShieldAlert, 
     Download, 
-    ExternalLink 
+    ExternalLink,
+    CheckCircle2,
+    TrendingUp
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -258,5 +260,3 @@ export default function UserDetailPage() {
         </div>
     )
 }
-
-import { TrendingUp } from "lucide-react"

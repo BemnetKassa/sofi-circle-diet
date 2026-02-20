@@ -135,19 +135,19 @@ export default function CreatePlanPage() {
                             <div className="grid grid-cols-4 gap-4">
                                 <div className="p-4 bg-primary/5 rounded-2xl border border-primary/10">
                                     <Label className="text-[10px] font-black uppercase tracking-tighter text-primary">Calories</Label>
-                                    <Input placeholder="0" variant="ghost" className="h-10 p-0 text-xl font-black bg-transparent border-0 focus-visible:ring-0" />
+                                    <Input placeholder="0" className="h-10 p-0 text-xl font-black bg-transparent border-0 focus-visible:ring-0" />
                                 </div>
                                 <div className="p-4 bg-muted/10 rounded-2xl border border-border/50">
                                     <Label className="text-[10px] font-black uppercase tracking-tighter text-muted-foreground">Protein (g)</Label>
-                                    <Input placeholder="0" variant="ghost" className="h-10 p-0 text-xl font-black bg-transparent border-0 focus-visible:ring-0" />
+                                    <Input placeholder="0" className="h-10 p-0 text-xl font-black bg-transparent border-0 focus-visible:ring-0" />
                                 </div>
                                 <div className="p-4 bg-muted/10 rounded-2xl border border-border/50">
                                     <Label className="text-[10px] font-black uppercase tracking-tighter text-muted-foreground">Carbs (g)</Label>
-                                    <Input placeholder="0" variant="ghost" className="h-10 p-0 text-xl font-black bg-transparent border-0 focus-visible:ring-0" />
+                                    <Input placeholder="0" className="h-10 p-0 text-xl font-black bg-transparent border-0 focus-visible:ring-0" />
                                 </div>
                                 <div className="p-4 bg-muted/10 rounded-2xl border border-border/50">
                                     <Label className="text-[10px] font-black uppercase tracking-tighter text-muted-foreground">Fats (g)</Label>
-                                    <Input placeholder="0" variant="ghost" className="h-10 p-0 text-xl font-black bg-transparent border-0 focus-visible:ring-0" />
+                                    <Input placeholder="0" className="h-10 p-0 text-xl font-black bg-transparent border-0 focus-visible:ring-0" />
                                 </div>
                             </div>
                         </CardContent>
