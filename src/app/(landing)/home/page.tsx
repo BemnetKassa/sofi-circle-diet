@@ -111,7 +111,7 @@ export default function HomePage() {
             
             <motion.p
               variants={itemVariants}
-              className="text-xl text-muted-foreground leading-relaxed max-w-xl"
+              className="text-xl text-foreground leading-relaxed max-w-xl"
             >
               Get a custom meal plan tailored to your body stats, goals, and budget. 
               Reviewed by experts, designed for <span className="font-semibold text-foreground bg-secondary/30 px-1 rounded">real results</span>.
