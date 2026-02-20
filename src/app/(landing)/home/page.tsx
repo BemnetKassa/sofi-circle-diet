@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { ArrowRight, CheckCircle, Star, Sparkles, TrendingUp, Users, ShieldCheck } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { Testimonies } from "@/components/testimonies"
 
 export default function HomePage() {
   const containerVariants = {
@@ -280,9 +281,15 @@ export default function HomePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 px-6 bg-primary text-primary-foreground relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white opacity-5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary opacity-20 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3"></div>
+        <section className="py-24 px-6 relative overflow-hidden flex items-center justify-center bg-primary text-primary-foreground">
+            {/* Background Animations */}
+            <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
+               <Testimonies />
+            </div>
+
+            {/* Gradient Blobs */}
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white opacity-10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary opacity-30 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
             
             <div className="container mx-auto text-center relative z-10 max-w-4xl">
                 <h2 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">Ready to Change Your Life?</h2>
