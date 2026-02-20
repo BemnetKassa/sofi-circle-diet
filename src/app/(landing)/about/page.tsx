@@ -56,7 +56,7 @@ export default function AboutPage() {
                     variants={itemVariants}
                     className="relative flex items-center gap-2 bg-secondary/20 text-secondary-foreground text-sm font-bold px-4 py-2 rounded-full border border-secondary shadow-sm mx-auto w-fit"
                    >
-                    <Heart className="w-4 h-4 fill-secondary" /> Our Story & Mission
+                    <Heart className="w-4 h-4 fill-secondary" /> My Story & Mission
                   </motion.span>
                 </div>
                 
@@ -64,9 +64,9 @@ export default function AboutPage() {
                     variants={itemVariants}
                     className="text-5xl md:text-7xl font-extrabold tracking-tight"
                 >
-                    Empowering a <br/>
+                    I am Sofonias: <br/>
                     <span className="text-primary relative inline-block">
-                        Healthier Ethiopia
+                        The Vision Behind
                         <svg className="absolute w-full h-3 -bottom-1 left-0 text-secondary opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none">
                             <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
                         </svg>
@@ -77,7 +77,7 @@ export default function AboutPage() {
                     variants={itemVariants}
                     className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
                 >
-                    Sofi Circle Diet was born from a simple belief: healthy eating shouldn't mean giving up the foods you love. We bridge the gap between traditional Ethiopian cuisine and modern nutritional science.
+                    I founded Sofi Circle Diet with a mission to transform lives. My journey combines a passion for health with a deep respect for Ethiopian culture, creating a unique approach to sustainable wellness.
                 </motion.p>
             </motion.div>
 
@@ -86,20 +86,21 @@ export default function AboutPage() {
                 <motion.div 
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
+                    whileHover={{ scale: 1.05, rotate: 0, transition: { duration: 0.4 } }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="relative aspect-square md:aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-background rotate-2 group"
+                    className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-3xl border-8 border-background rotate-2 group cursor-pointer"
                 >
                      <Image 
-                        src="/pictures/sofi1.png" 
-                        alt="Healthy Ethiopian Food" 
+                        src="/pictures/sofi5.png" 
+                        alt="Join the Sofi Circle" 
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-700" 
+                        className="object-cover transition-transform duration-700" 
                      />
-                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                     <div className="absolute bottom-8 left-8 text-white max-w-xs">
-                        <p className="font-bold text-2xl mb-2">Rooted in Tradition</p>
-                        <p className="opacity-90">Celebrating our rich culinary heritage while promoting wellness.</p>
+                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
+                     <div className="absolute bottom-8 left-8 text-white max-w-xs translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                        <p className="font-bold text-2xl mb-2">My Journey</p>
+                        <p className="opacity-90">Committed to health, transformation, and your results.</p>
                      </div>
                 </motion.div>
 
@@ -110,12 +111,15 @@ export default function AboutPage() {
                     viewport={{ once: true }}
                     className="space-y-8"
                 >
-                    <h2 className="text-4xl font-bold text-foreground">More Than Just a Diet Plan</h2>
+                    <h2 className="text-4xl font-bold text-foreground">My Vision for Your Health</h2>
                     <p className="text-lg text-muted-foreground leading-relaxed">
-                        We understand the unique challenges of maintaining a balanced diet in Ethiopia. From the ubiquity of Injera to the celebration feasts, food is central to our culture.
+                        I started my journey in the nutrition field out of personal necessity. Years ago, I found myself struggling with my own health and energy levels, and I realized that the general advice I was finding didn't fit the Ethiopian way of life.
                     </p>
                     <p className="text-lg text-muted-foreground leading-relaxed">
-                        Our goal isn't to change who you are, but to give you the tools to make smarter choices. Whether you want to lose weight, gain muscle, or simply feel better, we provide personalized roadmaps that fit <em>your</em> life.
+                        To find a better way, I dedicated myself to studying nutritional science, combining it with my deep understanding of our local ingredients and culinary traditions. Through years of research, self-experimentation, and helping my initial circle of friends and family, I developed a system that actually works for us.
+                    </p>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                        What started as a personal search for health turned into a professional passion. I've spent thousands of hours analyzing local foods—from Teff to Shiro—to understand how they can be used to achieve real body transformations without sacrificing our culture.
                     </p>
                     
                     <div className="grid sm:grid-cols-2 gap-6 pt-4">
@@ -189,9 +193,9 @@ export default function AboutPage() {
                 <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
 
                 <div className="relative z-10 max-w-3xl mx-auto space-y-8">
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">Ready to join the movement?</h2>
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">Ready to let me guide your path?</h2>
                     <p className="text-xl text-white/90 leading-relaxed">
-                        Start your journey towards a healthier, happier you today. Let's rewrite your story together.
+                        Join the Sofi Circle and start your journey towards a healthier, better you today. I am here to help you every step of the way.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                         <Button size="lg" variant="secondary" className="h-16 px-10 text-lg rounded-full shadow-lg hover:scale-105 transition-transform font-bold" asChild>

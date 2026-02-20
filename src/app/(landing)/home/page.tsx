@@ -64,16 +64,16 @@ export default function HomePage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
-             {/* Mobile Background Image */}
-             <div className="absolute inset-0 lg:hidden z-0 overflow-hidden">
+             {/* Background Image */}
+             <div className="absolute inset-0 z-0 overflow-hidden">
                 <Image 
-                    src="/pictures/sofi1.png" 
-                    alt="Background" 
+                    src="/pictures/sofi4.png" 
+                    alt="Hero Background" 
                     fill 
-                    className="object-cover object-[center_20%] opacity-20" 
+                    className="object-cover object-center opacity-80" 
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/10 to-background"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-background/5 via-background/40 to-background/90"></div>
              </div>
 
             <div className="py-20 md:py-32 px-6 max-w-7xl mx-auto relative grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
