@@ -18,6 +18,7 @@ export function Navbar() {
     { href: "/home", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/how-it-works", label: "How It Works" },
+    { href: "/who-it-is-for", label: "Who It's For" },
     { href: "/pricing", label: "Pricing" },
     { href: "/contact", label: "Contact" },
   ]
@@ -81,33 +82,63 @@ export function Navbar() {
         {/* Mobile Nav Overlay */}
         <AnimatePresence>
             {isOpen && (
-                <motion.div 
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    className="absolute top-0 left-0 w-full h-screen bg-background flex flex-col items-center justify-center gap-8 md:hidden z-40"
-                >
-                    {links.map((link) => (
-                        <Link 
-                            key={link.href} 
-                            href={link.href}
-                            onClick={() => setIsOpen(false)}
-                            className={`text-2xl font-bold ${isActive(link.href) ? "text-primary" : "text-foreground"}`}
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
-                    <Link 
-                        href="/login" 
+                <>
+                    {/* Backdrop */}
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                         onClick={() => setIsOpen(false)}
-                        className={`text-2xl font-bold ${isActive("/login") ? "text-primary" : "text-foreground"}`}
+                        className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
+                    />
+                    
+                    {/* Sidebar */}
+                    <motion.div 
+                        initial={{ x: "-100%" }}
+                        animate={{ x: 0 }}
+                        exit={{ x: "-100%" }}
+                        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                        className="fixed top-0 left-0 w-[80%] max-w-sm h-screen bg-background z-50 p-8 flex flex-col gap-8 md:hidden shadow-2xl overflow-y-auto"
                     >
-                        Login
-                    </Link>
-                    <Button asChild className="rounded-full px-8 py-6 text-lg shadow-xl shadow-primary/20">
-                        <Link href="/get-plan" onClick={() => setIsOpen(false)}>Get My Meal Plan</Link>
-                    </Button>
-                </motion.div>
+                        <div className="flex items-center justify-between mb-4">
+                            <Link href="/home" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
+                                <div className="w-8 h-8 bg-gradient-to-br from-primary to-green-600 rounded-lg flex items-center justify-center text-white font-bold">
+                                    S
+                                </div>
+                                <span className="font-bold text-lg">Sofi Circle</span>
+                            </Link>
+                            <button onClick={() => setIsOpen(false)} className="p-2 text-muted-foreground hover:text-foreground">
+                                <X className="w-6 h-6" />
+                            </button>
+                        </div>
+                        
+                        <div className="flex flex-col gap-5">
+                            {links.map((link) => (
+                                <Link 
+                                    key={link.href} 
+                                    href={link.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className={`text-xl font-semibold transition-colors ${isActive(link.href) ? "text-primary" : "text-foreground hover:text-primary"}`}
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </div>
+                        
+                        <div className="mt-auto flex flex-col gap-4 pt-10 border-t border-border/50">
+                            <Link 
+                                href="/login" 
+                                onClick={() => setIsOpen(false)}
+                                className={`text-xl font-semibold transition-colors ${isActive("/login") ? "text-primary" : "text-foreground hover:text-primary"}`}
+                            >
+                                Login
+                            </Link>
+                            <Button asChild className="rounded-full w-full py-6 text-lg shadow-xl shadow-primary/20">
+                                <Link href="/get-plan" onClick={() => setIsOpen(false)}>Get My Meal Plan</Link>
+                            </Button>
+                        </div>
+                    </motion.div>
+                </>
             )}
         </AnimatePresence>
       </div>

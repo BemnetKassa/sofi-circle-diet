@@ -32,8 +32,7 @@ export function Footer() {
                   {[
                       { l: "Home", h: "/home" },
                       { l: "About", h: "/about" },
-                      { l: "How It Works", h: "/how-it-works" },
-                      { l: "Pricing", h: "/pricing" },
+                      { l: "How It Works", h: "/how-it-works" },                      { l: "Who It's For", h: "/who-it-is-for" },                      { l: "Pricing", h: "/pricing" },
                       { l: "Contact", h: "/contact" }
                   ].map((link, i) => (
                     <li key={i}>
