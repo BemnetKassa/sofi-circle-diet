@@ -110,8 +110,10 @@ export default function HomePage() {
                     Get My Meal Plan <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
-              <Button variant="outline" size="lg" className="h-14 px-8 text-lg rounded-full border-2 hover:bg-secondary/10 hover:border-secondary hover:text-secondary-foreground transition-all duration-200">
-                View Sample Plan
+              <Button variant="outline" size="lg" className="h-14 px-8 text-lg rounded-full border-2 hover:bg-secondary/10 hover:border-secondary hover:text-secondary-foreground transition-all duration-200" asChild>
+                <Link href="/pricing">
+                  View Sample Plan
+                </Link>
               </Button>
             </motion.div>
 
