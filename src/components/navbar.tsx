@@ -45,7 +45,7 @@ export function Navbar() {
         </Link>
         
         {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-1 items-center bg-secondary/10 px-2 py-1.5 rounded-full border border-secondary/20 backdrop-blur-sm">
+        <nav className="hidden md:flex gap-1 items-center bg-secondary/5 px-2 py-1.5 rounded-full border border-secondary/10 backdrop-blur-sm shadow-sm ring-1 ring-white/20">
            {links.map((link) => (
              <Link 
                 key={link.href} 
@@ -65,6 +65,9 @@ export function Navbar() {
         </nav>
         
         <div className="hidden md:flex items-center gap-4">
+             <Button variant="ghost" asChild className="rounded-full px-6 font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors">
+                <Link href="/login">Login</Link>
+             </Button>
              <Button asChild className="rounded-full px-6 shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300 bg-gradient-to-r from-primary to-green-600 border-0">
                 <Link href="/get-plan">Get My Meal Plan</Link>
              </Button>
@@ -94,6 +97,13 @@ export function Navbar() {
                             {link.label}
                         </Link>
                     ))}
+                    <Link 
+                        href="/login" 
+                        onClick={() => setIsOpen(false)}
+                        className={`text-2xl font-bold ${isActive("/login") ? "text-primary" : "text-foreground"}`}
+                    >
+                        Login
+                    </Link>
                     <Button asChild className="rounded-full px-8 py-6 text-lg shadow-xl shadow-primary/20">
                         <Link href="/get-plan" onClick={() => setIsOpen(false)}>Get My Meal Plan</Link>
                     </Button>
