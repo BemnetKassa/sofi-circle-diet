@@ -332,7 +332,7 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-primary -z-30"></div>
 
             {/* Background Animations (Testimonies) */}
-            <div className="absolute inset-0 py-8 z-0 opacity-100 flex flex-col justify-center">
+            <div className="absolute inset-0 py-8 z-0 mt-60 opacity-100 flex flex-col justify-center ">
                <Testimonies />
             </div>
 
