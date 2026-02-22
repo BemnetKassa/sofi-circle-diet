@@ -9,7 +9,7 @@ export function CtaSection() {
     return (
         <section className="py-24 px-6 relative overflow-hidden flex items-center justify-center text-white isolate">
             {/* Background Color Layer */}
-            <div className="absolute inset-0 bg-primary -z-30"></div>
+            <div className="absolute inset-0 bg-primary/80 -z-30"></div>
 
             {/* Background Animations (Testimonies) */}
             <div className="absolute inset-0 py-8 z-0 mt-60 opacity-100 flex flex-col justify-center ">
@@ -17,7 +17,7 @@ export function CtaSection() {
             </div>
 
             {/* Overlay to ensure text readability */}
-            <div className="absolute inset-0 bg-primary/80 backdrop-blur-[2px] -z-10"></div>
+            <div className="absolute inset-0 bg-primary/70 backdrop-blur-[4px] -z-10"></div>
             
             {/* Gradient Blobs */}
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white opacity-10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none -z-20"></div>

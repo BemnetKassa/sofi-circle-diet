@@ -29,7 +29,7 @@ export function HeroSection({ containerVariants, itemVariants }: HeroSectionProp
             src="/pictures/sofi4.png" 
             alt="Hero Background" 
             fill 
-            className="object-cover object-center opacity-80" 
+            className="object-cover object-center opacity-100" 
             priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/5 via-background/40 to-background/90"></div>
