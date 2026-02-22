@@ -5,13 +5,13 @@ export function Footer() {
   return (
     <footer className="bg-[#0a0a0a] text-gray-300 py-20 px-6 relative overflow-hidden border-t border-white/5">
       {/* Footer background effects */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2"></div>
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none translate-y-1/2"></div>
+      <div className="absolute top-0 left-1/4 w-125 h-125 bg-primary/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2"></div>
+      <div className="absolute bottom-0 right-1/4 w-125 h-125 bg-secondary/5 rounded-full blur-[100px] pointer-events-none translate-y-1/2"></div>
 
       <div className="container mx-auto grid md:grid-cols-4 gap-12 relative z-10">
           <div className="space-y-6 col-span-1 md:col-span-2">
               <div className="flex items-center gap-3 text-white font-black text-2xl tracking-tight">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary to-green-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20">S</div>
+                  <div className="w-10 h-10 bg-linear-to-br from-primary to-green-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20">S</div>
                   <span>Sofi Circle <span className="text-primary">Diet</span></span>
               </div>
               <p className="text-gray-400 max-w-sm leading-relaxed text-lg">
@@ -31,8 +31,9 @@ export function Footer() {
               <ul className="space-y-4">
                   {[
                       { l: "Home", h: "/home" },
+                      { l: "Blog", h: "/blog" },
                       { l: "About", h: "/about" },
-                      { l: "How It Works", h: "/how-it-works" },                      { l: "Who It's For", h: "/who-it-is-for" },                      { l: "Pricing", h: "/pricing" },
+                      { l: "How It Works", h: "/how-it-works" },                      { l: "Who It's For", h: "/who-it-is-for" },                      { l: "Nutrition Plans", h: "/nutritionPlan" },
                       { l: "Contact", h: "/contact" }
                   ].map((link, i) => (
                     <li key={i}>

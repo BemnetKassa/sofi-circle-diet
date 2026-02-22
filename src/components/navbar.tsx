@@ -16,10 +16,11 @@ export function Navbar() {
 
   const links = [
     { href: "/home", label: "Home" },
+    { href: "/blog", label: "Blog" },
     { href: "/about", label: "About" },
     { href: "/how-it-works", label: "How It Works" },
     { href: "/who-it-is-for", label: "Who It's For" },
-    { href: "/pricing", label: "Pricing" },
+    { href: "/nutritionPlan", label: "Nutrition Plans" },
     { href: "/contact", label: "Contact" },
   ]
 
@@ -36,7 +37,7 @@ export function Navbar() {
             <motion.div 
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.5 }}
-              className="w-10 h-10 bg-gradient-to-br from-primary to-green-600 rounded-xl flex items-center justify-center text-primary-foreground font-black text-xl shadow-lg relative z-10"
+              className="w-10 h-10 bg-linear-to-br from-primary to-green-600 rounded-xl flex items-center justify-center text-primary-foreground font-black text-xl shadow-lg relative z-10"
             >
               S
             </motion.div>
@@ -69,7 +70,7 @@ export function Navbar() {
              <Button variant="ghost" asChild className="rounded-full px-6 font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors">
                 <Link href="/login">Login</Link>
              </Button>
-             <Button asChild className="rounded-full px-6 shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300 bg-gradient-to-r from-primary to-green-600 border-0">
+             <Button asChild className="rounded-full px-6 shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300 bg-linear-to-r from-primary to-green-600 border-0">
                 <Link href="/get-plan">Get My Meal Plan</Link>
              </Button>
         </div>
@@ -102,7 +103,7 @@ export function Navbar() {
                     >
                         <div className="flex items-center justify-between mb-4">
                             <Link href="/home" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
-                                <div className="w-8 h-8 bg-gradient-to-br from-primary to-green-600 rounded-lg flex items-center justify-center text-white font-bold">
+                                <div className="w-8 h-8 bg-linear-to-br from-primary to-green-600 rounded-lg flex items-center justify-center text-white font-bold">
                                     S
                                 </div>
                                 <span className="font-bold text-lg">Sofi Circle</span>

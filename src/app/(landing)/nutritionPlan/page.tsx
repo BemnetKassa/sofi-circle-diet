@@ -5,8 +5,9 @@ import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { Check, Sparkles, Star } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
-export default function PricingPage() {
+export default function NutritionPlanPage() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -53,7 +54,7 @@ export default function PricingPage() {
             >
                 <motion.div variants={itemVariants} className="inline-block relative">
                     <span className="relative flex items-center gap-2 mt-4 bg-secondary/20 text-secondary-foreground text-sm font-bold px-4 py-2 rounded-full border border-secondary shadow-sm mx-auto w-fit">
-                        <Sparkles className="w-4 h-4 fill-secondary" /> Simple Pricing, No Hidden Fees
+                        <Sparkles className="w-4 h-4 fill-secondary" /> Transparent Pricing, No Hidden Fees
                     </span>
                 </motion.div>
                 
@@ -80,11 +81,23 @@ export default function PricingPage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="relative bg-card/80 backdrop-blur-sm rounded-[2rem] p-8 border hover:border-primary/30 transition-all duration-300 hover:shadow-xl group"
+                    className="relative bg-card/80 backdrop-blur-sm rounded-[2rem] p-8 border hover:border-primary/30 transition-all duration-300 hover:shadow-xl group overflow-hidden"
                 >
-                    <div className="mb-8">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none group-hover:bg-primary/10 transition-colors"></div>
+                    
+                    <div className="relative h-48 mb-8 rounded-2xl overflow-hidden shadow-md">
+                        <Image 
+                            src="/pictures/sofi2.png" 
+                            alt="Standard Plan Meal Nutrition" 
+                            fill 
+                            className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                        />
+                        <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent"></div>
+                    </div>
+
+                    <div className="mb-8 relative z-10">
                         <h3 className="text-2xl font-bold mb-2">Standard Plan</h3>
-                        <p className="text-muted-foreground">Essential tools to restart your journey.</p>
+                        <p className="text-muted-foreground italic">Essential tools to start your journey.</p>
                     </div>
                     
                     <div className="mb-8 items-end flex gap-2">
@@ -126,13 +139,27 @@ export default function PricingPage() {
                       <Star className="w-4 h-4 fill-secondary-foreground" /> MOST POPULAR
                    </div>
 
-                   <div className="bg-card rounded-[1.8rem] p-8 h-full relative overflow-hidden">
+                   <div className="bg-card rounded-[1.8rem] p-8 h-full relative overflow-hidden flex flex-col">
                         {/* Shimmer effect */}
-                        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-secondary/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                        <div className="absolute top-0 right-0 w-75 h-75 bg-secondary/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
 
-                        <div className="mb-8 relative z-10">
-                            <h3 className="text-3xl font-bold mb-2 text-primary">Premium Plan</h3>
-                            <p className="text-muted-foreground">Comprehensive guide for maximum results.</p>
+                        <div className="relative h-56 mb-8 rounded-2xl overflow-hidden shadow-xl border-border/50 border bg-background">
+                            <Image 
+                                src="/pictures/sofi5.png" 
+                                alt="Premium Personalized Nutrition" 
+                                fill 
+                                className="object-cover group-hover:scale-105 transition-transform duration-1000" 
+                                priority
+                            />
+                            <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent"></div>
+                            <div className="absolute bottom-4 left-4 p-3 bg-background/80 backdrop-blur-md rounded-xl shadow-lg border border-primary/20">
+                                <span className="text-xs font-black tracking-widest text-primary uppercase">Expert Choice</span>
+                            </div>
+                        </div>
+
+                        <div className="mb-8 relative z-10 pt-4">
+                            <h3 className="text-3xl font-black mb-2 text-primary tracking-tight">Premium Plan</h3>
+                            <p className="text-muted-foreground font-medium italic">Comprehensive guide for maximum results.</p>
                         </div>
                         
                         <div className="mb-8 items-end flex gap-2 relative z-10">
