@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { useState, useMemo } from "react"
+import { useState, useMemo, Suspense } from "react"
 import { CheckCircle, ArrowRight, Loader2, ArrowLeft, CreditCard } from "lucide-react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
@@ -45,7 +45,7 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>
 
-export default function GetPlanPage() {
+function GetPlanForm() {
   const searchParams = useSearchParams()
   const planType = searchParams.get("plan") || "standard"
   

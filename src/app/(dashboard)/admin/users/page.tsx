@@ -130,7 +130,7 @@ export default function AdminUsersPage() {
                                         <td className="px-6 py-4">
                                             <div className="flex items-center gap-3">
                                                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-black text-xs border border-primary/10 shadow-inner group-hover:scale-110 transition-transform">
-                                                    {user.name.split(' ').map(n => n[0]).join('')}
+                                                    {user.name.split(' ').map((n: string) => n[0]).join('')}
                                                 </div>
                                                 <div>
                                                     <p className="font-bold text-foreground text-sm tracking-tight">{user.name}</p>
