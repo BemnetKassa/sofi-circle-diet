@@ -82,7 +82,7 @@ export function HeroSection({ containerVariants, itemVariants }: HeroSectionProp
               </Link>
             </Button>
             <Button variant="outline" size="lg" className="h-14 px-8 text-lg rounded-full border-2 hover:bg-secondary/10 hover:border-secondary hover:text-secondary-foreground transition-all duration-200" asChild>
-              <Link href="/pricing">
+              <Link href="/nutritionPlan">
                 View Sample Plan
               </Link>
             </Button>

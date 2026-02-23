@@ -4,6 +4,7 @@ import { motion, Variants } from "framer-motion"
 import { Users, User, UserPlus, Heart, Zap, Target, Coffee, GraduationCap, Briefcase, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function WhoItIsForPage() {
   const containerVariants: Variants = {
@@ -57,44 +58,68 @@ export default function WhoItIsForPage() {
 
       {/* Gender Focus */}
       <section className="py-20 px-6">
-        <div className="container mx-auto">
+        <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div 
                whileHover={{ y: -5 }}
-               className="bg-background border border-border p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all relative overflow-hidden group"
+               className="bg-background border border-border rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all relative overflow-hidden group flex flex-col"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 text-blue-600">
-                <User className="w-8 h-8" />
+              <div className="relative h-64 w-full overflow-hidden">
+                <Image 
+                  src="/pictures/men.jpg" 
+                  alt="Sofi Circle for Men" 
+                  fill 
+                  className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"></div>
               </div>
-              <h3 className="text-2xl font-bold mb-4">For Men</h3>
-              <p className="text-muted-foreground mb-6">
-                Whether you want to build lean muscle, increase your energy levels for work, or shed the extra "Abesha" belly, we provide high-protein, energy-dense plans that keep you full and focused.
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-blue-500" /> Muscle building protocols</li>
-                <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-blue-500" /> Performance nutrition</li>
-                <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-blue-500" /> Sustainable fat loss</li>
-              </ul>
+              
+              <div className="p-10 relative">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
+                <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 text-blue-600 relative z-10 -mt-16 border-4 border-background shadow-lg">
+                    <User className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">For Men</h3>
+                <p className="text-muted-foreground mb-6">
+                    Whether you want to build lean muscle, increase your energy levels for work, or shed the extra "Abesha" belly, we provide high-protein, energy-dense plans that keep you full and focused.
+                </p>
+                <ul className="space-y-3">
+                    <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-blue-500" /> Muscle building protocols</li>
+                    <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-blue-500" /> Performance nutrition</li>
+                    <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-blue-500" /> Sustainable fat loss</li>
+                </ul>
+              </div>
             </motion.div>
 
             <motion.div 
                whileHover={{ y: -5 }}
-               className="bg-background border border-border p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all relative overflow-hidden group"
+               className="bg-background border border-border rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all relative overflow-hidden group flex flex-col"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-pink-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-              <div className="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center mb-6 text-pink-600">
-                <UserPlus className="w-8 h-8" />
+              <div className="relative h-64 w-full overflow-hidden">
+                <Image 
+                  src="/pictures/women.jpg" 
+                  alt="Sofi Circle for Women" 
+                  fill 
+                  className="object-cover group-hover:scale-105 transition-transform duration-500" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"></div>
               </div>
-              <h3 className="text-2xl font-bold mb-4">For Women</h3>
-              <p className="text-muted-foreground mb-6">
-                Tailored for hormonal balance, glowing skin, and sustainable weight management. Our plans focus on nutrient-dense ingredients like Teff and Flaxseed to help you feel your best every day.
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-pink-500" /> Balanced hormonal health</li>
-                <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-pink-500" /> Toned physique focus</li>
-                <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-pink-500" /> Nutrient-rich local ingredients</li>
-              </ul>
+
+              <div className="p-10 relative">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-pink-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
+                  <div className="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center mb-6 text-pink-600 relative z-10 -mt-16 border-4 border-background shadow-lg">
+                    <UserPlus className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4">For Women</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Tailored for hormonal balance, glowing skin, and sustainable weight management. Our plans focus on nutrient-dense ingredients like Teff and Flaxseed to help you feel your best every day.
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-pink-500" /> Balanced hormonal health</li>
+                    <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-pink-500" /> Toned physique focus</li>
+                    <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-pink-500" /> Nutrient-rich local ingredients</li>
+                  </ul>
+              </div>
             </motion.div>
           </div>
         </div>

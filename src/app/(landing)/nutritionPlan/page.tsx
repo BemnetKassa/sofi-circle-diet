@@ -250,9 +250,12 @@ export default function NutritionPlanPage() {
                 <div className="relative z-10 space-y-8">
                     <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter">Ready to see <span className="text-primary italic">yourself</span> in the mirror differently?</h2>
                     <p className="text-zinc-400 text-xl max-w-2xl mx-auto font-medium italic">"The best time to start was yesterday. The second best time is right now. Let's make it happen together."</p>
-                    <div className="pt-6">
-                        <Button size="lg" className="h-20 px-12 text-2xl font-black rounded-full shadow-2xl shadow-primary/40 bg-primary hover:scale-110 transition-transform" asChild>
-                            <Link href="/get-plan">START YOUR TRANSFORMATION <ArrowRight className="ml-3 w-8 h-8" /></Link>
+                    <div className="pt-6 w-full flex justify-center">
+                        <Button size="lg" className="w-full sm:w-auto h-auto sm:h-20 py-6 sm:py-0 px-6 sm:px-12 text-lg sm:text-2xl font-black rounded-full shadow-2xl shadow-primary/40 bg-primary hover:scale-110 transition-transform whitespace-normal" asChild>
+                            <Link href="/get-plan" className="flex items-center justify-center">
+                                <span className="text-center">START YOUR TRANSFORMATION</span>
+                                <ArrowRight className="ml-3 w-6 h-6 sm:w-8 sm:h-8 shrink-0" />
+                            </Link>
                         </Button>
                     </div>
                     <div className="flex justify-center items-center gap-8 pt-10 border-t border-white/10 opacity-70">

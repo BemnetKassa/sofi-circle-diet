@@ -147,9 +147,9 @@ export default function HowItWorksPage() {
                 <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
                 
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 relative z-10 text-foreground">Ready to start your transformation?</h2>
-                <Button size="lg" className="h-14 px-10 text-lg rounded-full shadow-xl hover:shadow-primary/25 hover:scale-105 transition-transform bg-primary text-primary-foreground" asChild>
-                    <Link href="/get-plan">
-                        Get Your Personalized Plan <ArrowRight className="ml-2 w-5 h-5" />
+                <Button size="lg" className="w-full sm:w-auto h-auto sm:h-14 py-4 sm:py-0 px-6 sm:px-10 text-base sm:text-lg rounded-full shadow-xl hover:shadow-primary/25 hover:scale-105 transition-transform bg-primary text-primary-foreground whitespace-normal" asChild>
+                    <Link href="/get-plan" className="flex items-center justify-center">
+                        Get Your Personalized Plan <ArrowRight className="ml-2 w-5 h-5 shrink-0" />
                     </Link>
                 </Button>
              </div>
