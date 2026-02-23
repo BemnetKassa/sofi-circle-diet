@@ -92,7 +92,7 @@ export default function AboutPage() {
                     className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-3xl border-8 border-background rotate-2 group cursor-pointer"
                 >
                      <Image 
-                        src="/pictures/sofi5.png" 
+                        src="/pictures/sofi9.webp" 
                         alt="Join the Sofi Circle" 
                         fill
                         className="object-cover transition-transform duration-700" 

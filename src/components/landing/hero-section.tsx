@@ -121,7 +121,7 @@ export function HeroSection({ containerVariants, itemVariants }: HeroSectionProp
             >
                 <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl border-8 border-background rotate-2 hover:rotate-0 transition-transform duration-500">
                    <Image 
-                      src="/pictures/sofi1.png" 
+                      src="/pictures/sofi8.webp" 
                       alt="Healthy Food" 
                       fill
                       className="object-cover"

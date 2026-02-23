@@ -67,9 +67,6 @@ export function Navbar() {
         </nav>
         
         <div className="hidden md:flex items-center gap-4">
-             <Button variant="ghost" asChild className="rounded-full px-6 font-medium text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors">
-                <Link href="/login">Login</Link>
-             </Button>
              <Button asChild className="rounded-full px-6 shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300 bg-linear-to-r from-primary to-green-600 border-0">
                 <Link href="/get-plan">Get My Meal Plan</Link>
              </Button>
