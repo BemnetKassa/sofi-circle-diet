@@ -343,12 +343,6 @@ export default function GetPlanPage() {
                         {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
                         </div>
 
-                        <div className="grid gap-2">
-                            <Label htmlFor="password" className="text-sm font-semibold">Create Password</Label>
-                            <Input id="password" type="password" {...register("password")} placeholder="••••••••" className="bg-background/50 focus:bg-background transition-colors" />
-                            {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>}
-                        </div>
-
                         <div className="grid md:grid-cols-2 gap-5">
                             <div className="grid gap-2">
                                 <Label htmlFor="age" className="text-sm font-semibold">Age</Label>

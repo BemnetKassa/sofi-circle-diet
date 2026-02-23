@@ -53,7 +53,7 @@ export function Testimonies() {
           }}
       >
           {duplicatedTestimonies.map((t, i) => (
-              <div key={i} className="bg-white/10 backdrop-blur-md p-6 rounded-2xl w-[320px] flex-shrink-0 border border-white/20 shadow-xl opacity-80 hover:opacity-100 transition-opacity">
+              <div key={i} className="bg-green-500 backdrop-blur-md p-6 rounded-2xl w-[320px] flex-shrink-0 border border-white/20 shadow-xl opacity-90 hover:opacity-100 transition-opacity">
                   <div className="flex gap-1 mb-3">
                       {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-secondary text-secondary" />)}
                   </div>
