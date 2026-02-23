@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { 
     Users, 
     Search, 
@@ -28,16 +28,35 @@ import {
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
 
-const mockUsers = [
-    { id: 1, name: "Abebe Bekele", email: "abebe@example.com", status: "Active", plan: "Weight Loss", joined: "Feb 10, 2026" },
-    { id: 2, name: "Helen Tesfaye", email: "helen@example.com", status: "Pending", plan: "Muscle Gain", joined: "Feb 15, 2026" },
-    { id: 3, name: "Samuel Hailu", email: "samuel@example.com", status: "Inactive", plan: "Student Budget", joined: "Jan 20, 2026" },
-    { id: 4, name: "Lydia Mekonnen", email: "lydia@example.com", status: "Active", plan: "Professional Meal", joined: "Feb 5, 2026" },
-    { id: 5, name: "Dawit Amare", email: "dawit@example.com", status: "Active", plan: "Weight Loss", joined: "Feb 18, 2026" },
-]
-
 export default function AdminUsersPage() {
     const [searchTerm, setSearchTerm] = useState("")
+    const [users, setUsers] = useState<any[]>([])
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        async function fetchUsers() {
+            try {
+                const res = await fetch('/api/admin/users')
+                const data = await res.json()
+                // Transform data if needed to match UI expectations
+                const mappedUsers = data.map((u: any) => ({
+                    id: u.id,
+                    name: u.name,
+                    email: u.email,
+                    status: u.status,
+                    plan: "Standard", // mocked
+                    joined: new Date(u.joinedAt).toLocaleDateString()
+                }))
+                setUsers(mappedUsers)
+            } catch (error) {
+                console.error("Failed to fetch users", error)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+        fetchUsers()
+    }, [])
+
 
     return (
         <div className="space-y-8 max-w-7xl">
