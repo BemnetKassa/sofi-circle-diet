@@ -21,8 +21,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { useState } from "react"
-import { CheckCircle, ArrowRight, Loader2, ArrowLeft } from "lucide-react"
+import { useState, useMemo } from "react"
+import { CheckCircle, ArrowRight, Loader2, ArrowLeft, CreditCard } from "lucide-react"
+import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { AnimatePresence, motion } from "framer-motion"
 
@@ -46,10 +47,17 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>
 
 export default function GetPlanPage() {
+  const searchParams = useSearchParams()
+  const planType = searchParams.get("plan") || "standard"
+  
   const [step, setStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [direction, setDirection] = useState(0)
+
+  const planPrice = useMemo(() => {
+    return planType === "premium" ? 4999 : 4000
+  }, [planType])
 
   const {
     register,
@@ -71,11 +79,36 @@ export default function GetPlanPage() {
 
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true)
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-    console.log("Form submitted:", data)
-    setIsSubmitting(false)
-    setIsSuccess(true)
+    try {
+        const tx_ref = `tx-${Date.now()}-${Math.floor(Math.random() * 1000)}`
+        
+        const response = await fetch('/api/pay', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ...data,
+                amount: planPrice,
+                tx_ref: tx_ref,
+                planType: planType
+            }),
+        })
+
+        const result = await response.json()
+
+        if (result.url) {
+            // Redirect to Chapa checkout
+            window.location.href = result.url
+        } else {
+            alert(result.message || "Failed to initialize payment")
+        }
+    } catch (error) {
+        console.error("Payment Error:", error)
+        alert("An error occurred during payment initialization.")
+    } finally {
+        setIsSubmitting(false)
+    }
   }
 
   const nextStep = async () => {
@@ -409,12 +442,17 @@ export default function GetPlanPage() {
 
                                     <span className="text-muted-foreground">Budget:</span>
                                     <span className="font-medium text-right capitalize text-foreground">{formValues.budget}</span>
+
+                                    <div className="col-span-2 border-t pt-3 mt-1 flex justify-between items-center">
+                                        <span className="font-bold text-lg">Total to Pay:</span>
+                                        <span className="font-black text-2xl text-secondary">{planPrice} ETB</span>
+                                    </div>
                                 </div>
                             </div>
                             <div className="flex items-start gap-3 p-4 bg-secondary/10 rounded-xl border border-secondary/20">
-                                <CheckCircle className="w-5 h-5 text-secondary-foreground shrink-0 mt-0.5" />
+                                <CreditCard className="w-5 h-5 text-secondary-foreground shrink-0 mt-0.5" />
                                 <p className="text-sm text-secondary-foreground/90 font-medium">
-                                    By submitting, you agree to pay the one-time fee upon approval of your request.
+                                    You will be redirected to Chapa's secure payment portal to complete your purchase of the <span className="underline decoration-2">{planType}</span> plan.
                                 </p>
                             </div>
                         </div>
@@ -445,15 +483,17 @@ export default function GetPlanPage() {
                 <Button 
                     type="submit" 
                     disabled={isSubmitting} 
-                    className="gap-2 min-w-[140px] bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold shadow-lg shadow-secondary/20 hover:shadow-secondary/40 transition-all hover:-translate-y-0.5"
+                    className="gap-2 min-w-[180px] bg-secondary hover:bg-secondary/90 text-secondary-foreground font-black shadow-lg shadow-secondary/20 hover:shadow-secondary/40 transition-all hover:-translate-y-0.5"
                 >
                     {isSubmitting ? (
                         <>
                             <Loader2 className="h-4 w-4 animate-spin" />
-                            Processing...
+                            Redirecting to Payment...
                         </>
                     ) : (
-                        "Submit Request"
+                        <>
+                            Pay {planPrice} ETB <ArrowRight className="w-4 h-4" />
+                        </>
                     )}
                 </Button>
                 )}

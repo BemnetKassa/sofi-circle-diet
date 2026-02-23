@@ -6,21 +6,39 @@ import { StatCard } from "@/components/dashboard/stat-card"
 import { AdminRecentSignups } from "@/components/dashboard/admin-recent-signups"
 import { AdminQuickActions } from "@/components/dashboard/admin-quick-actions"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
 export default function AdminDashboard() {
-  const stats = [
-    { title: "Total Users", value: "2,543", change: "+12.5%", icon: Users, color: "text-blue-600", bg: "bg-blue-50" },
-    { title: "Active Plans", value: "1,234", change: "+5.2%", icon: Activity, color: "text-green-600", bg: "bg-green-50" },
-    { title: "Revenue (Feb)", value: "ETB 452k", change: "+18.2%", icon: CreditCard, color: "text-purple-600", bg: "bg-purple-50" },
-  ]
+  const [stats, setStats] = useState([
+    { title: "Total Users", value: "...", change: "...", icon: Users, color: "text-blue-600", bg: "bg-blue-50" },
+    { title: "Active Plans", value: "...", change: "...", icon: Activity, color: "text-green-600", bg: "bg-green-50" },
+    { title: "Revenue (Feb)", value: "...", change: "...", icon: CreditCard, color: "text-purple-600", bg: "bg-purple-50" },
+  ])
+  const [recentSignups, setRecentSignups] = useState<any[]>([])
 
-  const recentSignups: any[] = [
-    { id: 1, name: "Abebe Bikila", email: "abebe@example.com", plan: "Weight Loss", date: "2 mins ago", status: "pending" },
-    { id: 2, name: "Sara Tadesse", email: "sara@gmail.com", plan: "Muscle Gain", date: "15 mins ago", status: "active" },
-    { id: 3, name: "Dawit Kebede", email: "dawit.k@yahoo.com", plan: "Maintenance", date: "1 hour ago", status: "active" },
-    { id: 4, name: "Hellen M.", email: "hellen@example.com", plan: "Weight Loss", date: "3 hours ago", status: "rejected" },
-    { id: 5, name: "Yonas Alemu", email: "yonas@gmail.com", plan: "Keto Diet", date: "5 hours ago", status: "pending" },
-  ]
+  useEffect(() => {
+    async function fetchData() {
+        try {
+            const res = await fetch('/api/admin/stats');
+            const data = await res.json();
+            
+            // Map API response to UI structure if needed, currently matching mock data structure
+            if (data.stats) {
+                setStats([
+                    { title: "Total Users", value: data.stats[0].value, change: data.stats[0].change, icon: Users, color: "text-blue-600", bg: "bg-blue-50" },
+                    { title: "Active Plans", value: data.stats[1].value, change: data.stats[1].change, icon: Activity, color: "text-green-600", bg: "bg-green-50" },
+                    { title: "Revenue (Feb)", value: data.stats[2].value, change: data.stats[2].change, icon: CreditCard, color: "text-purple-600", bg: "bg-purple-50" },
+                ]);
+            }
+            if (data.recentSignups) {
+                setRecentSignups(data.recentSignups);
+            }
+        } catch (error) {
+            console.error("Failed to fetch dashboard data", error);
+        }
+    }
+    fetchData();
+  }, []);
 
   return (
     <div className="space-y-10 max-w-7xl">
