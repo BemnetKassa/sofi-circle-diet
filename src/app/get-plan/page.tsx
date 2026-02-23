@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { useState, useMemo, Suspense } from "react"
+import { useState, useMemo } from "react"
 import { CheckCircle, ArrowRight, Loader2, ArrowLeft, CreditCard } from "lucide-react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
@@ -45,7 +45,7 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>
 
-function GetPlanForm() {
+export default function GetPlanPage() {
   const searchParams = useSearchParams()
   const planType = searchParams.get("plan") || "standard"
   
@@ -295,7 +295,17 @@ function GetPlanForm() {
                 </AnimatePresence>
             </CardHeader>
             
-            <form onSubmit={handleSubmit(onSubmit)} className="relative overflow-hidden">
+            <form 
+                onSubmit={(e) => {
+                    // Prevent submission if not on the final step
+                    if (step < 3) {
+                        e.preventDefault();
+                        return;
+                    }
+                    handleSubmit(onSubmit)(e);
+                }} 
+                className="relative overflow-hidden"
+            >
             <CardContent className="space-y-6 pt-6 min-h-[320px]">
                 <AnimatePresence mode="wait" custom={direction}>
                     <motion.div
@@ -331,6 +341,12 @@ function GetPlanForm() {
                         <Label htmlFor="email" className="text-sm font-semibold">Email Address</Label>
                         <Input id="email" type="email" {...register("email")} placeholder="you@example.com" className="bg-background/50 focus:bg-background transition-colors" />
                         {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+                        </div>
+
+                        <div className="grid gap-2">
+                            <Label htmlFor="password" className="text-sm font-semibold">Create Password</Label>
+                            <Input id="password" type="password" {...register("password")} placeholder="••••••••" className="bg-background/50 focus:bg-background transition-colors" />
+                            {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>}
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-5">
@@ -495,17 +511,5 @@ function GetPlanForm() {
         </Card>
       </motion.div>
     </div>
-  )
-}
-
-export default function GetPlanPage() {
-  return (
-    <Suspense fallback={
-      <div className="flex h-screen w-full items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
-    }>
-      <GetPlanForm />
-    </Suspense>
   )
 }
