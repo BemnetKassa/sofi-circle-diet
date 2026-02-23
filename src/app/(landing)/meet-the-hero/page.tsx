@@ -65,35 +65,101 @@ export default function MeetTheHeroPage() {
 
             {/* My Story Section */}
             <section className="py-24 bg-secondary/5 px-6">
-                <div className="container mx-auto max-w-4xl">
+                <div className="container mx-auto max-w-5xl">
                      <motion.div 
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="prose prose-lg prose-gray dark:prose-invert mx-auto"
+                        className="space-y-24"
                      >
-                        <h2 className="text-3xl font-bold text-center mb-12">My Personal Journey</h2>
+                        <h2 className="text-4xl md:text-5xl font-black text-center mb-16">My Journey to the Stage</h2>
                         
-                        <div className="space-y-8 text-lg leading-relaxed text-muted-foreground">
-                            <p>
-                                Growing up in Ethiopia, food was always at the center of our community. It was about connection, celebration, and love. However, like many, I struggled to find the balance between enjoying our rich culinary heritage and maintaining a healthy lifestyle.
-                            </p>
-                            <p>
-                                I tried countless diets—most of them imported, ignoring our staple foods like Injera. They felt alien, restrictive, and impossible to sustain. I realized something was missing: a bridge between modern nutritional science and our Ethiopian reality.
-                            </p>
-                            <div className="my-10 p-8 bg-background rounded-2xl border border-secondary/20 shadow-sm relative overflow-hidden">
-                                <Quote className="absolute top-4 left-4 w-8 h-8 text-secondary/40" />
-                                <p className="italic text-xl font-medium text-foreground relative z-10 text-center">
-                                    "I didn't want to just lose weight. I wanted to build a lifestyle that I could love for the rest of my life."
+                        {/* Phase 1: The Beginning */}
+                        <div className="grid md:grid-cols-2 gap-12 items-center">
+                            <div className="order-2 md:order-1 relative h-[400px] w-full rounded-3xl overflow-hidden shadow-xl rotate-[-2deg] hover:rotate-0 transition-all duration-500">
+                                <Image 
+                                    src="/pictures/youngSofi.JPG" 
+                                    alt="Early days at the local gym" 
+                                    fill 
+                                    className="object-cover hover:scale-105 transition-transform duration-700" 
+                                />
+                            </div>
+                            <div className="order-1 md:order-2 space-y-6">
+                                <span className="text-primary font-bold tracking-wider uppercase">The Beginning</span>
+                                <h3 className="text-3xl font-bold">Where It All Started</h3>
+                                <p className="text-lg text-muted-foreground leading-relaxed">
+                                    It wasn't always about trophies or stages. My journey began over <strong>10 years ago</strong> in a small local gym here in Ethiopia. I was just a young kid with a dream and a lot to learn.
+                                </p>
+                                <p className="text-lg text-muted-foreground leading-relaxed">
+                                    I spent 5 years dedicated to learning the science of professional competition—not just lifting weights, but understanding anatomy, nutrition, and discipline. Those early years taught me that consistency is the only magic pill.
                                 </p>
                             </div>
-                            <p>
-                                That's when <strong>Sofi Circle Diet</strong> was born. I dedicated years to studying nutrition and fitness, testing methods that work <em>with</em> our culture, not against it. My mission became clear: to empower Ethiopians to achieve their health goals without losing their identity.
-                            </p>
-                            <p>
-                                Today, I am proud to have helped thousands of people transform their bodies and minds. But more than that, I am proud of the community we've built—a circle of support, encouragement, and shared success.
-                            </p>
                         </div>
+
+                        {/* Phase 2: Local Competition */}
+                        <div className="grid md:grid-cols-2 gap-12 items-center">
+                            <div className="order-1 space-y-6">
+                                <span className="text-secondary font-bold tracking-wider uppercase">Rising Up</span>
+                                <h3 className="text-3xl font-bold">From Local Stages...</h3>
+                                <p className="text-lg text-muted-foreground leading-relaxed">
+                                    The road wasn't easy. I faced countless ups and downs—injuries, doubts, and the immense pressure of competition. But I kept showing up.
+                                </p>
+                                <p className="text-lg text-muted-foreground leading-relaxed">
+                                    Competing in local areas was where I forged my character. Every loss was a lesson, and every win was a stepping stone. I learned that true strength is built in the moments heavily challenges you.
+                                </p>
+                            </div>
+                            <div className="order-2 relative h-[400px] w-full rounded-3xl overflow-hidden shadow-xl rotate-[2deg] hover:rotate-0 transition-all duration-500">
+                                <Image 
+                                    src="/pictures/localCompete.JPG" 
+                                    alt="Competing in local areas" 
+                                    fill 
+                                    className="object-cover hover:scale-105 transition-transform duration-700" 
+                                />
+                            </div>
+                        </div>
+
+                         {/* Phase 3: International Success */}
+                         <div className="grid md:grid-cols-2 gap-12 items-center">
+                            <div className="order-2 md:order-1 relative h-[500px] w-full rounded-3xl overflow-hidden shadow-xl -rotate-1 hover:rotate-0 transition-all duration-500">
+                                <Image 
+                                    src="/pictures/bronz.JPG" 
+                                    alt="International Competition in South Africa" 
+                                    fill 
+                                    className="object-cover hover:scale-105 transition-transform duration-700" 
+                                />
+                                <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-md text-white px-4 py-2 rounded-lg text-sm font-bold border border-white/20">
+                                    South Africa, International Stage
+                                </div>
+                            </div>
+                            <div className="order-1 md:order-2 space-y-6">
+                                <span className="text-primary font-bold tracking-wider uppercase">International Level</span>
+                                <h3 className="text-3xl font-bold">...To the World Stage</h3>
+                                <p className="text-lg text-muted-foreground leading-relaxed">
+                                    My dedication took me beyond our borders. Representing my country on international stages, like in South Africa, was a dream come true.
+                                </p>
+                                <p className="text-lg text-muted-foreground leading-relaxed">
+                                    Standing on that podium and bringing home the Bronze medal was proof that with enough heart and hard work, any goal is achievable. It wasn't just my victory; it was for everyone who believed in me.
+                                </p>
+                            </div>
+                        </div>
+
+                         {/* Phase 4: The Medals */}
+                         <div className="bg-card p-12 rounded-[3rem] border border-border/50 text-center space-y-8 shadow-2xl relative overflow-hidden">
+                             <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+                             <h3 className="text-3xl font-bold relative z-10">A Legacy of Dedication</h3>
+                             <p className="text-lg text-muted-foreground max-w-2xl mx-auto relative z-10">
+                                 These medals are symbols of years of sacrifice, discipline, and unwavering consistency. This is the experience I bring to <strong>Sofi Circle Diet</strong>—to help you achieve your own victories.
+                             </p>
+                             <div className="relative h-[300px] md:h-[400px] w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-md border-4 border-background rotate-1 hover:rotate-0 transition-all">
+                                 <Image 
+                                    src="/pictures/medal.JPG" 
+                                    alt="Medals from big competitions" 
+                                    fill 
+                                    className="object-cover hover:scale-105 transition-transform duration-700" 
+                                />
+                             </div>
+                         </div>
+
                      </motion.div>
                 </div>
             </section>

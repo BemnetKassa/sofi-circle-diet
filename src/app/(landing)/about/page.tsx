@@ -154,6 +154,61 @@ export default function AboutPage() {
                  </div>
             </div>
 
+            {/* Maed Nutrition Partnership - Convenience Focused */}
+            <div className="mb-32 relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-transparent rounded-[3rem] transform -rotate-1 scale-105 opacity-50 group-hover:rotate-0 transition-all duration-500"></div>
+                <div className="bg-card border border-border/50 rounded-[3rem] p-10 md:p-16 relative overflow-hidden shadow-xl flex flex-col lg:flex-row items-center gap-16 backdrop-blur-sm">
+                    
+                    {/* Visual Side */}
+                    <div className="lg:w-1/2 relative">
+                        <div className="absolute top-1/2 left-1/2 w-[120%] h-[120%] bg-orange-400/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+                        <div className="relative z-10 rotate-3 group-hover:rotate-0 transition-transform duration-700">
+                             <div className="bg-white p-4 rounded-3xl shadow-lg inline-block transform -translate-y-4 translate-x-4 absolute top-0 right-0 z-20">
+                                <span className="text-2xl">⚡</span>
+                             </div>
+                             <div className="bg-white rounded-3xl shadow-2xl overflow-hidden h-[350px] flex items-center justify-center p-8">
+                                <Image 
+                                    src="/pictures/maed_logo.jpg" 
+                                    alt="Maed Nutrition Logo" 
+                                    width={600} 
+                                    height={400} 
+                                    className="object-contain w-full h-full"
+                                />
+                             </div>
+                             <div className="absolute -bottom-6 -left-6 bg-orange-500 text-white px-8 py-3 rounded-full font-bold shadow-lg flex items-center gap-2">
+                                <span>No Cooking Required</span>
+                             </div>
+                        </div>
+                    </div>
+
+                    {/* Content Side */}
+                    <div className="lg:w-1/2 text-left space-y-6 relative z-10">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 text-sm font-bold uppercase tracking-wider mb-2">
+                             Exclusive Partner
+                        </div>
+                        <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+                            Healthy Eating, <br/>
+                            <span className="text-orange-500">Delivered.</span>
+                        </h2>
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                            We know life in Addis is busy. That's why we've partnered with <a href="https://maednutritions.com/" target="_blank" className="text-orange-600 font-bold hover:underline">Maed Nutrition</a> to bring our meal plans directly to your doorstep.
+                        </p>
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                            Get chef-prepared, macro-counted meals based on your Sofi Circle plan, delivered fresh daily. No shopping, no chopping, just results.
+                        </p>
+                        
+                        <div className="pt-4 flex flex-wrap gap-4">
+                            <Button size="lg" className="rounded-full bg-orange-500 hover:bg-orange-600 shadow-orange-200 shadow-xl" asChild>
+                                <a href="https://maednutritions.com/" target="_blank">Order Your Meals</a>
+                            </Button>
+                            <Button size="lg" variant="ghost" className="rounded-full text-orange-600 hover:text-orange-700 hover:bg-orange-50" asChild>
+                                <Link href="/contact">Learn How It Works</Link>
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {/* Meet The Hero - CTA Section */}
             <section className="relative rounded-[3rem] bg-gradient-to-br from-[#1e1e1e] to-[#0f0f0f] text-white p-10 md:p-20 overflow-hidden shadow-2xl">
                  <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">

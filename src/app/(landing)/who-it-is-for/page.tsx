@@ -83,7 +83,13 @@ export default function WhoItIsForPage() {
                 <p className="text-muted-foreground mb-6">
                     Whether you want to build lean muscle, increase your energy levels for work, or shed the extra "Abesha" belly, we provide high-protein, energy-dense plans that keep you full and focused.
                 </p>
-                <ul className="space-y-3">
+                <div className="mb-6 p-4 bg-blue-50/50 rounded-xl border border-blue-100">
+                    <p className="text-sm text-blue-800 font-medium flex items-start gap-2">
+                        <Zap className="w-4 h-4 mt-0.5 shrink-0" />
+                        <span>Powered by <Link href="https://maednutritions.com/" target="_blank" className="underline font-bold">Maed Nutrition</Link> for protein-packed meal delivery directly to your office or home.</span>
+                    </p>
+                </div>
+                <ul className="space-y-3 mt-auto">
                     <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-blue-500" /> Muscle building protocols</li>
                     <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-blue-500" /> Performance nutrition</li>
                     <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-blue-500" /> Sustainable fat loss</li>
@@ -114,7 +120,13 @@ export default function WhoItIsForPage() {
                   <p className="text-muted-foreground mb-6">
                     Tailored for hormonal balance, glowing skin, and sustainable weight management. Our plans focus on nutrient-dense ingredients like Teff and Flaxseed to help you feel your best every day.
                   </p>
-                  <ul className="space-y-3">
+                  <div className="mb-6 p-4 bg-pink-50/50 rounded-xl border border-pink-100">
+                      <p className="text-sm text-pink-800 font-medium flex items-start gap-2">
+                           <Zap className="w-4 h-4 mt-0.5 shrink-0" />
+                          <span>No time to cook? <Link href="https://maednutritions.com/" target="_blank" className="underline font-bold">Maed Nutrition</Link> delivers healthy, chef-prepared meals to your door.</span>
+                      </p>
+                  </div>
+                  <ul className="space-y-3 mt-auto">
                     <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-pink-500" /> Balanced hormonal health</li>
                     <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-pink-500" /> Toned physique focus</li>
                     <li className="flex items-center gap-2 text-sm font-medium"><CheckCircle2 className="w-4 h-4 text-pink-500" /> Nutrient-rich local ingredients</li>

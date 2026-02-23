@@ -1,7 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Users, TrendingUp, ShieldCheck } from "lucide-react"
+import { Users, TrendingUp, ShieldCheck, Truck } from "lucide-react"
+import Link from "next/link"
 
 export function FeaturesSection() {
     return (
@@ -13,7 +14,7 @@ export function FeaturesSection() {
                     <p className="text-muted-foreground text-lg">We do not just give you a diet plan; we give you a lifestyle change that fits your reality in Ethiopia.</p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-4 gap-8">
                     {[
                         {
                             icon: <Users className="w-10 h-10 text-primary" />,
@@ -29,6 +30,15 @@ export function FeaturesSection() {
                             icon: <ShieldCheck className="w-10 h-10 text-green-600" />,
                             title: "100% Safe",
                             desc: "We prioritize your health with balanced meals tailored to your specific needs."
+                        },
+                        {
+                            icon: <Truck className="w-10 h-10 text-orange-500" />,
+                            title: "Delivered to You",
+                            desc: (
+                                <span>
+                                    Meals prepared and delivered by our partner <Link href="https://maednutritions.com/" target="_blank" className="font-bold underline text-foreground hover:text-primary">Maed Nutrition</Link>.
+                                </span>
+                            )
                         }
                     ].map((feature, i) => (
                         <motion.div 
@@ -37,13 +47,13 @@ export function FeaturesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.1 }}
                             viewport={{ once: true }}
-                            className="bg-background p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-border/50 text-center"
+                            className="bg-background p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-border/50 text-center flex flex-col items-center"
                         >
-                            <div className="w-16 h-16 rounded-full bg-muted mx-auto mb-6 flex items-center justify-center">
+                            <div className="w-16 h-16 rounded-full bg-muted mb-6 flex items-center justify-center">
                                 {feature.icon}
                             </div>
                             <h3 className="font-bold text-xl mb-3">{feature.title}</h3>
-                            <p className="text-muted-foreground">{feature.desc}</p>
+                            <div className="text-muted-foreground">{feature.desc}</div>
                         </motion.div>
                     ))}
                 </div>
