@@ -1,9 +1,36 @@
 import { NextResponse } from 'next/server';
+import dbConnect from '@/lib/db';
+import Order from '@/models/Order';
 
 export async function POST(req: Request) {
   try {
+    await dbConnect();
     const body = await req.json();
-    const { email, firstName, lastName, amount, tx_ref } = body;
+    const { 
+        email, firstName, lastName, amount, tx_ref,
+        phone, age, gender, height, weight, goal, 
+        dietaryPreferences, allergies, budget, planType
+    } = body;
+
+    // Create a pending order in the database
+    await Order.create({
+        firstName,
+        lastName,
+        email,
+        phone,
+        age: Number(age),
+        gender,
+        height: Number(height),
+        weight: Number(weight),
+        goal,
+        dietaryPreferences,
+        allergies,
+        budget,
+        planType: planType || 'standard',
+        amount,
+        tx_ref,
+        status: 'pending'
+    });
 
     const CHAPA_SECRET_KEY = process.env.CHAPA_SECRET_KEY;
 

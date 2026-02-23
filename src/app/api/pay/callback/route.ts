@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server';
+import dbConnect from '@/lib/db';
+import Order from '@/models/Order';
 
 export async function GET(req: Request) {
   try {
@@ -8,6 +10,8 @@ export async function GET(req: Request) {
     if (!tx_ref) {
         return NextResponse.json({ message: 'Transaction reference is missing' }, { status: 400 });
     }
+
+    await dbConnect();
 
     const CHAPA_SECRET_KEY = process.env.CHAPA_SECRET_KEY;
     if (!CHAPA_SECRET_KEY) {
@@ -25,8 +29,16 @@ export async function GET(req: Request) {
     const verifyData = await verifyResponse.json();
 
     if (verifyData.status === 'success') {
-        // TODO: Update database to mark order as paid
-        // const order = await db.order.update({ ... })
+        // Update database to mark order as confirmed/completed
+        await Order.findOneAndUpdate(
+            { tx_ref: tx_ref },
+            { 
+                status: 'completed',
+                paymentMethod: verifyData.data.method || 'chapa'
+            }
+        );
+        
+        // In a real app, you might want to trigger an email here using Resend or similar
         
         return NextResponse.json({ 
             message: 'Payment verified successfully',
@@ -45,13 +57,17 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
     // Handle Chapa Webhook here
     try {
+        await dbConnect();
         const body = await req.json();
         
         // Chapa sends the transaction details in the body
         // You should verify the signature if Chapa provides one to ensure it's from them
         
         if (body.status === 'success' && body.tx_ref) {
-             // TODO: Update database
+             await Order.findOneAndUpdate(
+                { tx_ref: body.tx_ref },
+                { status: 'completed' }
+             );
              console.log(`Payment successful for tx_ref: ${body.tx_ref}`);
              return NextResponse.json({ status: 'ok' });
         }

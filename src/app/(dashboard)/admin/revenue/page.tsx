@@ -19,15 +19,35 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Badge } from "@/components/ui/badge"
 
 import Link from "next/link"
-
-const revenueStats = [
-    { title: "Total Revenue", value: "ETB 245,600", trend: "+15.2%", positive: true, icon: DollarSign },
-    { title: "Active Subs", value: "842 Users", trend: "+4.1%", positive: true, icon: Users },
-    { title: "Avg. Plan Value", value: "ETB 450", trend: "-2.4%", positive: false, icon: CreditCard },
-    { title: "Net Growth", value: "ETB 42,100", trend: "+8.9%", positive: true, icon: TrendingUp },
-]
+import { useState, useEffect } from "react"
 
 export default function AdminRevenuePage() {
+    const [revenueStats, setRevenueStats] = useState([
+        { title: "Total Revenue", value: "...", trend: "...", positive: true, icon: DollarSign },
+        { title: "Active Subs", value: "...", trend: "...", positive: true, icon: Users },
+        { title: "Avg. Plan Value", value: "...", trend: "...", positive: false, icon: CreditCard },
+        { title: "Net Growth", value: "...", trend: "...", positive: true, icon: TrendingUp },
+    ])
+
+    useEffect(() => {
+        async function fetchRevenue() {
+            try {
+                const res = await fetch('/api/admin/revenue')
+                const data = await res.json()
+                // Map the data to the UI structure (mocked mapping for now as API returns simple object)
+                setRevenueStats([
+                    { title: "Total Revenue", value: `ETB ${data.totalRevenue}`, trend: "+15.2%", positive: true, icon: DollarSign },
+                    { title: "Active Subs", value: "842 Users", trend: "+4.1%", positive: true, icon: Users },
+                    { title: "Avg. Plan Value", value: "ETB 450", trend: "-2.4%", positive: false, icon: CreditCard },
+                    { title: "Net Growth", value: "ETB 42,100", trend: "+8.9%", positive: true, icon: TrendingUp },
+                ])
+            } catch (error) {
+                console.error("Failed to fetch revenue", error)
+            }
+        }
+        fetchRevenue()
+    }, [])
+
     return (
         <div className="space-y-10 max-w-7xl animate-in fade-in slide-in-from-bottom-4 duration-500">
             {/* Page Header */}

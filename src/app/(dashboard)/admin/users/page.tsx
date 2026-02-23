@@ -57,6 +57,10 @@ export default function AdminUsersPage() {
         fetchUsers()
     }, [])
 
+    const filteredUsers = users.filter((user: any) => 
+        user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchTerm.toLowerCase())
+    )
 
     return (
         <div className="space-y-8 max-w-7xl">
@@ -103,7 +107,7 @@ export default function AdminUsersPage() {
                 <CardHeader className="pb-0">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
                         <CardTitle className="text-xl font-bold">Client List</CardTitle>
-                        <Badge variant="secondary" className="font-bold border border-border/50 h-fit bg-white px-4 py-1">Total: {mockUsers.length} Users</Badge>
+                        <Badge variant="secondary" className="font-bold border border-border/50 h-fit bg-white px-4 py-1">Total: {users.length} Users</Badge>
                     </div>
                 </CardHeader>
                 <CardContent className="px-0">
@@ -119,7 +123,9 @@ export default function AdminUsersPage() {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-border/20 font-medium">
-                                {mockUsers.map((user) => (
+                                {isLoading ? (
+                                    <tr><td colSpan={5} className="text-center py-4">Loading...</td></tr>
+                                ) : filteredUsers.map((user: any) => (
                                     <tr key={user.id} className="hover:bg-muted/30 transition-colors group">
                                         <td className="px-6 py-4">
                                             <div className="flex items-center gap-3">
