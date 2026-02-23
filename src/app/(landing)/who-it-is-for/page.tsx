@@ -232,7 +232,7 @@ export default function WhoItIsForPage() {
               <Link href="/get-plan">Get My Custom Plan</Link>
             </Button>
             <Button variant="outline" size="lg" className="h-14 px-10 rounded-full text-lg" asChild>
-              <Link href="/pricing">View Pricing</Link>
+              <Link href="/nutritionPlan">View Plan</Link>
             </Button>
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
-import { Heart, Users, Leaf, Target } from "lucide-react"
+import { Heart, Users, Leaf, ShieldCheck, ArrowRight, Star } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -12,201 +12,191 @@ export default function AboutPage() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
+        staggerChildren: 0.15,
       },
     },
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { type: "spring" as const, stiffness: 50 }
+      transition: { duration: 0.6, ease: "easeOut" }
     },
   }
 
   return (
-    <div className="flex flex-col min-h-screen overflow-hidden relative">
-      {/* Animated Background blobs */}
-      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <motion.div 
-          animate={{ x: [0, 100, 0], y: [0, 50, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-secondary/10 blur-3xl opacity-60" 
-        />
-        <motion.div 
-          animate={{ x: [0, -50, 0], y: [0, 100, 0], scale: [1, 1.2, 1] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear", delay: 2 }}
-          className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-3xl opacity-50" 
-        />
+    <div className="flex flex-col min-h-screen overflow-hidden relative font-sans">
+      
+      {/* Decorative Background Elements */}
+      <div className="fixed inset-0 -z-10 bg-background overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px]" />
       </div>
 
-      <main className="flex-1 py-16 px-6">
+      <main className="flex-1 pt-32 pb-16 px-6">
         <div className="container mx-auto max-w-7xl">
+           
+           {/* Hero / Intro Section */}
            <motion.div
                 initial="hidden"
                 animate="visible"
                 variants={containerVariants}
-                className="text-center mb-20 space-y-6"
+                className="text-center mb-24 max-w-4xl mx-auto"
             >
-                <div className="inline-block relative mt-8">
-                   <motion.span 
-                    variants={itemVariants}
-                    className="relative flex items-center gap-2 bg-secondary/20 text-secondary-foreground text-sm font-bold px-4 py-2 rounded-full border border-secondary shadow-sm mx-auto w-fit"
-                   >
-                    <Heart className="w-4 h-4 fill-secondary" /> My Story & Mission
-                  </motion.span>
-                </div>
+                <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-semibold mb-8">
+                    <Star className="w-4 h-4 fill-secondary" /> 
+                    <span>Trusted by 10,000+ Ethiopians</span>
+                </motion.div>
                 
                 <motion.h1 
                     variants={itemVariants}
-                    className="text-5xl md:text-7xl font-extrabold tracking-tight"
+                    className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 leading-tight text-foreground"
                 >
-                    I am Sofonias: <br/>
+                    Redefining Wellness for <br className="hidden md:block"/>
                     <span className="text-primary relative inline-block">
-                        The Vision Behind
-                        <svg className="absolute w-full h-3 -bottom-1 left-0 text-secondary opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none">
-                            <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
+                        Every Ethiopian
+                        <svg className="absolute w-full h-3 -bottom-2 left-0 text-secondary opacity-30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                             <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
                         </svg>
                     </span>
                 </motion.h1>
                 
                 <motion.p 
                     variants={itemVariants}
-                    className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+                    className="text-xl md:text-2xl text-muted-foreground leading-relaxed"
                 >
-                    I founded Sofi Circle Diet with a mission to transform lives. My journey combines a passion for health with a deep respect for Ethiopian culture, creating a unique approach to sustainable wellness.
+                    We believe that health shouldn't cost you your heritage. <br className="hidden md:block" /> 
+                    Sofi Circle Diet is more than a plan; it's a movement to harmonize 
+                    modern nutrition with our rich traditions.
                 </motion.p>
             </motion.div>
 
-            {/* Mission Section */}
-            <div className="grid lg:grid-cols-2 gap-16 items-center mb-32">
-                <motion.div 
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    whileHover={{ scale: 1.05, rotate: 0, transition: { duration: 0.4 } }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-3xl border-8 border-background rotate-2 group cursor-pointer"
-                >
-                     <Image 
-                        src="/pictures/sofi9.webp" 
-                        alt="Join the Sofi Circle" 
-                        fill
-                        className="object-cover transition-transform duration-700" 
-                     />
-                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
-                     <div className="absolute bottom-8 left-8 text-white max-w-xs translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                        <p className="font-bold text-2xl mb-2">My Journey</p>
-                        <p className="opacity-90">Committed to health, transformation, and your results.</p>
-                     </div>
-                </motion.div>
+            {/* Why Sofi Circle Diet? - Detailed Explanation */}
+            <div className="mb-32 space-y-32">
+                 {/* Section 1: The Circle Concept */}
+                 <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="relative"
+                    >
+                         <div className="absolute inset-0 bg-secondary/10 rounded-full blur-3xl transform -translate-x-10 translate-y-10"></div>
+                         <Image 
+                            src="/pictures/DSC00653.webp" 
+                            alt="Healthy Ethiopian Food" 
+                            width={600} 
+                            height={400} 
+                            className="rounded-[2.5rem] shadow-2xl relative z-10 border-4 border-background"
+                         />
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="space-y-6"
+                    >
+                        <div className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-bold mb-2">THE CONCEPT</div>
+                        <h2 className="text-4xl md:text-5xl font-bold leading-tight">Why "The Circle"?</h2>
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                            In Ethiopian culture, everything revolves around the circle. We eat from a shared plate (Gebeta), we sit in circles for coffee ceremonies, and life itself is cyclical.
+                        </p>
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                            <strong>Sofi Circle Diet</strong> embraces this philosophy. It's not a linear path with a start and end date; it's a continuous cycle of nourishment, movement, and growth. We bring you into a circle of support where health becomes a shared, communal experience rather than an isolated struggle.
+                        </p>
+                    </motion.div>
+                 </div>
 
-                <motion.div 
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    viewport={{ once: true }}
-                    className="space-y-8"
-                >
-                    <h2 className="text-4xl font-bold text-foreground">My Vision for Your Health</h2>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                        I started my journey in the nutrition field out of personal necessity. Years ago, I found myself struggling with my own health and energy levels, and I realized that the general advice I was finding didn't fit the Ethiopian way of life.
-                    </p>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                        To find a better way, I dedicated myself to studying nutritional science, combining it with my deep understanding of our local ingredients and culinary traditions. Through years of research, self-experimentation, and helping my initial circle of friends and family, I developed a system that actually works for us.
-                    </p>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                        What started as a personal search for health turned into a professional passion. I've spent thousands of hours analyzing local foods—from Teff to Shiro—to understand how they can be used to achieve real body transformations without sacrificing our culture.
-                    </p>
+                 {/* Section 2: Nutrition Philosophy */}
+                 <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="space-y-6 order-2 lg:order-1"
+                    >
+                        <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold mb-2">OUR NUTRITION</div>
+                        <h2 className="text-4xl md:text-5xl font-bold leading-tight">Eat Cultural, Live Healthy</h2>
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                            Many diet plans ask you to abandon your heritage. They demonize Injera or demand ingredients you can't find in local markets. We believe this is wrong.
+                        </p>
+                        <ul className="space-y-4 pt-4">
+                            {[
+                                "We optimize, we don't eliminate.",
+                                "Learn portion control with traditional foods.",
+                                "Recipes that use accessible, local ingredients.",
+                                "Balanced macros tailored for Ethiopian staples."
+                            ].map((item, i) => (
+                                <li key={i} className="flex items-center gap-3 font-medium text-foreground/80">
+                                    <Leaf className="w-5 h-5 text-green-500 shrink-0" />
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="relative order-1 lg:order-2"
+                    >
+                        <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl transform translate-x-10 -translate-y-10"></div>
+                         <Image 
+                            src="/pictures/DSC00730.webp" 
+                            alt="Preparation of healthy meal" 
+                            width={600} 
+                            height={400} 
+                            className="rounded-[2.5rem] shadow-2xl relative z-10 border-4 border-background rotate-2 hover:rotate-0 transition-transform duration-500"
+                         />
+                    </motion.div>
+                 </div>
+            </div>
+
+            {/* Meet The Hero - CTA Section */}
+            <section className="relative rounded-[3rem] bg-gradient-to-br from-[#1e1e1e] to-[#0f0f0f] text-white p-10 md:p-20 overflow-hidden shadow-2xl">
+                 <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
+                      <Image src="/pictures/sofi9.webp" alt="Background Texture" fill className="object-cover" />
+                 </div>
+                 
+                 <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+                    <div className="space-y-8">
+                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/30 text-xs font-bold uppercase tracking-wider">
+                            <Heart className="w-3 h-3 fill-primary" /> The Founder
+                         </div>
+                         <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+                            Meet the Heart Behind <br/> The Movement
+                         </h2>
+                         <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-xl">
+                            Sofonias Assefa founded this platform with a simple belief: Everyone deserves to feel strong, healthy, and confident. Discover the story that started it all and the man guiding thousands to a better life.
+                         </p>
+                         
+                         <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                            <Button size="lg" className="rounded-full h-14 px-8 text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-primary/25 transition-all" asChild>
+                                <Link href="/meet-the-hero">
+                                    Read Hero's Story <ArrowRight className="ml-2 w-5 h-5" />
+                                </Link>
+                            </Button>
+                         </div>
+                    </div>
                     
-                    <div className="grid sm:grid-cols-2 gap-6 pt-4">
-                        {[
-                            { title: "500+", sub: "Lives Changed" },
-                            { title: "100%", sub: "Customized Plans" },
-                            { title: "24/7", sub: "Support Access" },
-                            { title: "4.9", sub: "Average Rating" },
-                        ].map((stat, i) => (
-                            <div key={i} className="bg-secondary/10 p-6 rounded-2xl border border-secondary/20">
-                                <h3 className="text-3xl font-bold text-primary">{stat.title}</h3>
-                                <p className="text-muted-foreground font-medium">{stat.sub}</p>
-                            </div>
-                        ))}
+                    <div className="relative h-[400px] lg:h-[500px] w-full rounded-3xl overflow-hidden border-4 border-white/10 shadow-2xl rotate-3 hover:rotate-0 transition-all duration-500 group">
+                         <Image 
+                            src="/pictures/sofi9.webp" 
+                            alt="Sofonias Assefa" 
+                            fill 
+                            className="object-cover group-hover:scale-105 transition-transform duration-700" 
+                         />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                         <div className="absolute bottom-6 left-6">
+                            <p className="text-2xl font-bold font-serif italic text-white">"Your health is your greatest wealth."</p>
+                            <p className="text-white/70 mt-2 text-sm uppercase tracking-widest font-semibold">- Sofonias</p>
+                         </div>
                     </div>
-                </motion.div>
-            </div>
+                 </div>
+            </section>
 
-            {/* Values Grid */}
-            <div className="mb-32">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold mb-4">Our Core Values</h2>
-                    <p className="text-muted-foreground text-lg">The principles that guide everything we do.</p>
-                </div>
-
-                <div className="grid md:grid-cols-3 gap-8">
-                    {[
-                        {
-                            icon: <Users className="w-10 h-10 text-primary" />,
-                            title: "Community First",
-                            desc: "We build supportive communities where members uplift and motivate each other."
-                        },
-                        {
-                            icon: <Target className="w-10 h-10 text-secondary-foreground" />,
-                            title: "Personalization",
-                            desc: "We believe in bio-individuality. One size does not fit all when it comes to nutrition."
-                        },
-                        {
-                            icon: <Leaf className="w-10 h-10 text-green-600" />,
-                            title: "Sustainability",
-                            desc: "Promoting habits that are good for you and good for the planet."
-                        }
-                    ].map((val, i) => (
-                        <motion.div 
-                            key={i}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1, duration: 0.5 }}
-                            viewport={{ once: true }}
-                            className="bg-card p-8 rounded-[2rem] shadow-sm border hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
-                        >
-                            <div className="w-20 h-20 rounded-full bg-secondary/20 flex items-center justify-center mb-6 text-foreground group-hover:scale-110 transition-transform duration-300">
-                                {val.icon}
-                            </div>
-                            <h3 className="text-2xl font-bold mb-3">{val.title}</h3>
-                            <p className="text-muted-foreground leading-relaxed">{val.desc}</p>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-
-            {/* CTA Section */}
-            <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="rounded-[3rem] bg-gradient-to-r from-primary to-green-600 p-12 md:p-20 text-center relative overflow-hidden shadow-2xl"
-            >
-                {/* Decorative circles */}
-                <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-                <div className="absolute bottom-0 right-0 w-64 h-64 bg-secondary/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
-
-                <div className="relative z-10 max-w-3xl mx-auto space-y-8">
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">Ready to let me guide your path?</h2>
-                    <p className="text-xl text-white/90 leading-relaxed">
-                        Join the Sofi Circle and start your journey towards a healthier, better you today. I am here to help you every step of the way.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                        <Button size="lg" variant="secondary" className="h-16 px-10 text-lg rounded-full shadow-lg hover:scale-105 transition-transform font-bold" asChild>
-                            <Link href="/get-plan">Get Started Now</Link>
-                        </Button>
-                        <Button size="lg" variant="outline" className="h-16 px-10 text-lg rounded-full border-2 border-white/20 bg-white/10 text-white hover:bg-white hover:text-primary transition-all backdrop-blur-sm" asChild>
-                            <Link href="/contact">Contact Us</Link>
-                        </Button>
-                    </div>
-                </div>
-            </motion.div>
         </div>
       </main>
     </div>
