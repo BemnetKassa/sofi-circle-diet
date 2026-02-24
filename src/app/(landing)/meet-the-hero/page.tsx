@@ -2,9 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
-import { ArrowLeft, Quote, Heart, Award, Sparkles } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
+import { StorySlider } from "@/components/landing/story-slider"
 
 export default function MeetTheHeroPage() {
     return (
@@ -65,100 +63,19 @@ export default function MeetTheHeroPage() {
 
             {/* My Story Section */}
             <section className="py-24 bg-secondary/5 px-6">
-                <div className="container mx-auto max-w-5xl">
+                <div className="container mx-auto max-w-6xl">
                      <motion.div 
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="space-y-24"
+                        className="space-y-12"
                      >
-                        <h2 className="text-4xl md:text-5xl font-black text-center mb-16">My Journey to the Stage</h2>
+                        <h2 className="text-4xl md:text-5xl font-black text-center mb-8">My Journey to the Stage</h2>
+                        <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-12">
+                            Swipe through the key moments that defined my path from a local gym enthusiast to an international competitor.
+                        </p>
                         
-                        {/* Phase 1: The Beginning */}
-                        <div className="grid md:grid-cols-2 gap-12 items-center">
-                            <div className="order-2 md:order-1 relative h-[400px] w-full rounded-3xl overflow-hidden shadow-xl rotate-[-2deg] hover:rotate-0 transition-all duration-500">
-                                <Image 
-                                    src="/pictures/youngSofi.JPG" 
-                                    alt="Early days at the local gym" 
-                                    fill 
-                                    className="object-cover hover:scale-105 transition-transform duration-700" 
-                                />
-                            </div>
-                            <div className="order-1 md:order-2 space-y-6">
-                                <span className="text-primary font-bold tracking-wider uppercase">The Beginning</span>
-                                <h3 className="text-3xl font-bold">Where It All Started</h3>
-                                <p className="text-lg text-muted-foreground leading-relaxed">
-                                    It wasn't always about trophies or stages. My journey began over <strong>10 years ago</strong> in a small local gym here in Ethiopia. I was just a young kid with a dream and a lot to learn.
-                                </p>
-                                <p className="text-lg text-muted-foreground leading-relaxed">
-                                    I spent 5 years dedicated to learning the science of professional competition—not just lifting weights, but understanding anatomy, nutrition, and discipline. Those early years taught me that consistency is the only magic pill.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Phase 2: Local Competition */}
-                        <div className="grid md:grid-cols-2 gap-12 items-center">
-                            <div className="order-1 space-y-6">
-                                <span className="text-secondary font-bold tracking-wider uppercase">Rising Up</span>
-                                <h3 className="text-3xl font-bold">From Local Stages...</h3>
-                                <p className="text-lg text-muted-foreground leading-relaxed">
-                                    The road wasn't easy. I faced countless ups and downs—injuries, doubts, and the immense pressure of competition. But I kept showing up.
-                                </p>
-                                <p className="text-lg text-muted-foreground leading-relaxed">
-                                    Competing in local areas was where I forged my character. Every loss was a lesson, and every win was a stepping stone. I learned that true strength is built in the moments heavily challenges you.
-                                </p>
-                            </div>
-                            <div className="order-2 relative h-[400px] w-full rounded-3xl overflow-hidden shadow-xl rotate-[2deg] hover:rotate-0 transition-all duration-500">
-                                <Image 
-                                    src="/pictures/localCompete.JPG" 
-                                    alt="Competing in local areas" 
-                                    fill 
-                                    className="object-cover hover:scale-105 transition-transform duration-700" 
-                                />
-                            </div>
-                        </div>
-
-                         {/* Phase 3: International Success */}
-                         <div className="grid md:grid-cols-2 gap-12 items-center">
-                            <div className="order-2 md:order-1 relative h-[500px] w-full rounded-3xl overflow-hidden shadow-xl -rotate-1 hover:rotate-0 transition-all duration-500">
-                                <Image 
-                                    src="/pictures/bronz.JPG" 
-                                    alt="International Competition in South Africa" 
-                                    fill 
-                                    className="object-cover hover:scale-105 transition-transform duration-700" 
-                                />
-                                <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-md text-white px-4 py-2 rounded-lg text-sm font-bold border border-white/20">
-                                    South Africa, International Stage
-                                </div>
-                            </div>
-                            <div className="order-1 md:order-2 space-y-6">
-                                <span className="text-primary font-bold tracking-wider uppercase">International Level</span>
-                                <h3 className="text-3xl font-bold">...To the World Stage</h3>
-                                <p className="text-lg text-muted-foreground leading-relaxed">
-                                    My dedication took me beyond our borders. Representing my country on international stages, like in South Africa, was a dream come true.
-                                </p>
-                                <p className="text-lg text-muted-foreground leading-relaxed">
-                                    Standing on that podium and bringing home the Bronze medal was proof that with enough heart and hard work, any goal is achievable. It wasn't just my victory; it was for everyone who believed in me.
-                                </p>
-                            </div>
-                        </div>
-
-                         {/* Phase 4: The Medals */}
-                         <div className="bg-card p-12 rounded-[3rem] border border-border/50 text-center space-y-8 shadow-2xl relative overflow-hidden">
-                             <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
-                             <h3 className="text-3xl font-bold relative z-10">A Legacy of Dedication</h3>
-                             <p className="text-lg text-muted-foreground max-w-2xl mx-auto relative z-10">
-                                 These medals are symbols of years of sacrifice, discipline, and unwavering consistency. This is the experience I bring to <strong>Sofi Circle Diet</strong>—to help you achieve your own victories.
-                             </p>
-                             <div className="relative h-[300px] md:h-[400px] w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-md border-4 border-background rotate-1 hover:rotate-0 transition-all">
-                                 <Image 
-                                    src="/pictures/medal.JPG" 
-                                    alt="Medals from big competitions" 
-                                    fill 
-                                    className="object-cover hover:scale-105 transition-transform duration-700" 
-                                />
-                             </div>
-                         </div>
+                        <StorySlider />
 
                      </motion.div>
                 </div>
