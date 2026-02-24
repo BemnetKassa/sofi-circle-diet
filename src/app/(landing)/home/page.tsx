@@ -54,7 +54,6 @@ export default function HomePage() {
       <main className="flex-1">
         <HeroSection containerVariants={containerVariants} itemVariants={itemVariants} />
         <FeaturesSection />
-        <TransformationSection />
         <CtaSection />
       </main>
     </div>
