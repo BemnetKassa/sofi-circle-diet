@@ -17,8 +17,8 @@ export function Navbar() {
   const links = [
     { href: "/home", label: "Home" },
     { href: "/about", label: "About" },
-    { href: "/how-it-works", label: "How It Works" },
     { href: "/who-it-is-for", label: "Who It's For" },
+    { href: "/transformations", label: "Transformations" },
     { href: "/nutritionPlan", label: "Nutrition Plans" },
     { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" },

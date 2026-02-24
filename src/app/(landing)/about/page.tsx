@@ -31,6 +31,13 @@ export default function AboutPage() {
       
       {/* Decorative Background Elements */}
       <div className="fixed inset-0 -z-10 bg-background overflow-hidden pointer-events-none">
+        <Image 
+          src="/pictures/sofi-graphics.PNG" 
+          alt="Background Texture" 
+          fill 
+          className="object-contain object-top mt-20 opacity-40 scale-100"
+          quality={50}
+        />
         <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[100px]" />
         <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px]" />
       </div>
