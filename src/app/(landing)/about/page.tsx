@@ -31,8 +31,8 @@ export default function AboutPage() {
       
       {/* Decorative Background Elements */}
       <div className="fixed inset-0 -z-10 bg-background overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px]" />
+        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px]" />
       </div>
 
       <main className="flex-1 pt-32 pb-16 px-6">
@@ -45,8 +45,8 @@ export default function AboutPage() {
                 variants={containerVariants}
                 className="text-center mb-24 max-w-4xl mx-auto"
             >
-                <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-semibold mb-8">
-                    <Star className="w-4 h-4 fill-secondary" /> 
+                <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/20 text-secondary-foreground/80 text-sm font-semibold mb-8 border border-secondary/20">
+                    <Star className="w-4 h-4 fill-secondary text-secondary" /> 
                     <span>Trusted by 10,000+ Ethiopians</span>
                 </motion.div>
                 
@@ -55,9 +55,9 @@ export default function AboutPage() {
                     className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 leading-tight text-foreground"
                 >
                     Redefining Wellness for <br className="hidden md:block"/>
-                    <span className="text-primary relative inline-block">
+                    <span className="text-secondary relative inline-block">
                         Every Ethiopian
-                        <svg className="absolute w-full h-3 -bottom-2 left-0 text-secondary opacity-30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                        <svg className="absolute w-full h-3 -bottom-2 left-0 text-secondary opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none">
                              <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
                         </svg>
                     </span>
@@ -98,13 +98,13 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="space-y-6"
                     >
-                        <div className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-bold mb-2">THE CONCEPT</div>
+                        <div className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary border border-secondary/20 text-sm font-bold mb-2">THE CONCEPT</div>
                         <h2 className="text-4xl md:text-5xl font-bold leading-tight">Why "The Circle"?</h2>
                         <p className="text-lg text-muted-foreground leading-relaxed">
                             In Ethiopian culture, everything revolves around the circle. We eat from a shared plate (Gebeta), we sit in circles for coffee ceremonies, and life itself is cyclical.
                         </p>
                         <p className="text-lg text-muted-foreground leading-relaxed">
-                            <strong>Sofi Circle Diet</strong> embraces this philosophy. It's not a linear path with a start and end date; it's a continuous cycle of nourishment, movement, and growth. We bring you into a circle of support where health becomes a shared, communal experience rather than an isolated struggle.
+                            <strong className="text-secondary">Sofi Circle Diet</strong> embraces this philosophy. It's not a linear path with a start and end date; it's a continuous cycle of nourishment, movement, and growth. We bring you into a circle of support where health becomes a shared, communal experience rather than an isolated struggle.
                         </p>
                     </motion.div>
                  </div>
@@ -117,7 +117,7 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="space-y-6 order-2 lg:order-1"
                     >
-                        <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold mb-2">OUR NUTRITION</div>
+                        <div className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary border border-secondary/20 text-sm font-bold mb-2">OUR NUTRITION</div>
                         <h2 className="text-4xl md:text-5xl font-bold leading-tight">Eat Cultural, Live Healthy</h2>
                         <p className="text-lg text-muted-foreground leading-relaxed">
                             Many diet plans ask you to abandon your heritage. They demonize Injera or demand ingredients you can't find in local markets. We believe this is wrong.
@@ -130,7 +130,7 @@ export default function AboutPage() {
                                 "Balanced macros tailored for Ethiopian staples."
                             ].map((item, i) => (
                                 <li key={i} className="flex items-center gap-3 font-medium text-foreground/80">
-                                    <Leaf className="w-5 h-5 text-green-500 shrink-0" />
+                                    <Leaf className="w-5 h-5 text-secondary shrink-0" />
                                     {item}
                                 </li>
                             ))}
@@ -142,7 +142,7 @@ export default function AboutPage() {
                         viewport={{ once: true }}
                         className="relative order-1 lg:order-2"
                     >
-                        <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl transform translate-x-10 -translate-y-10"></div>
+                        <div className="absolute inset-0 bg-secondary/10 rounded-full blur-3xl transform translate-x-10 -translate-y-10"></div>
                          <Image 
                             src="/pictures/DSC00730.webp" 
                             alt="Preparation of healthy meal" 
@@ -217,8 +217,8 @@ export default function AboutPage() {
                  
                  <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-8">
-                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/30 text-xs font-bold uppercase tracking-wider">
-                            <Heart className="w-3 h-3 fill-primary" /> The Founder
+                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/20 text-secondary border border-secondary/30 text-xs font-bold uppercase tracking-wider">
+                            <Heart className="w-3 h-3 fill-secondary text-secondary" /> The Founder
                          </div>
                          <h2 className="text-4xl md:text-5xl font-bold leading-tight">
                             Meet the Heart Behind <br/> The Movement
@@ -228,7 +228,7 @@ export default function AboutPage() {
                          </p>
                          
                          <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                            <Button size="lg" className="rounded-full h-14 px-8 text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-primary/25 transition-all" asChild>
+                            <Button size="lg" className="rounded-full h-14 px-8 text-lg font-semibold bg-secondary hover:bg-secondary/90 text-secondary-foreground shadow-lg hover:shadow-secondary/25 transition-all" asChild>
                                 <Link href="/meet-the-hero">
                                     Read Hero's Story <ArrowRight className="ml-2 w-5 h-5" />
                                 </Link>
