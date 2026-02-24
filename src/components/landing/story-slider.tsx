@@ -22,22 +22,22 @@ const slideData: StorySlide[] = [
     id: 1,
     image: "/pictures/youngSofi.JPG",
     images: ["/pictures/youngSofi.JPG", "/pictures/youngSofi2.JPG"],
-    subtitle: "The Beginning",
-    title: "Where It All Started",
+    subtitle: "The Spark",
+    title: "A Decade of Relentless Pursuit",
     description: [
-      "It wasn't always about trophies or stages. My journey began over 10 years ago in a small local gym here in Ethiopia. I was just a young kid with a dream and a lot to learn.",
-      "I spent 5 years dedicated to learning the science of professional competition—not just lifting weights, but understanding anatomy, nutrition, and discipline. Those early years taught me that consistency is the only magic pill."
+      "My journey began over 10 years ago, not with applause, but with a quiet promise to myself in a small local gym. I was young, inexperienced, but fueled by a burning desire to transform.",
+      "What defined me wasn't just lifting weights—it was my refusal to stop. Through every setback and every drop of sweat, I built a personality rooted in resilience. I learned early on that true strength isn't given; it's forged in the fires of consistency."
     ],
     layout: "image-left"
   },
   {
     id: 2,
     image: "/pictures/localCompete.JPG",
-    subtitle: "Rising Up",
-    title: "From Local Stages...",
+    subtitle: "The Climb",
+    title: "Against All Odds",
     description: [
-      "The road wasn't easy. I faced countless ups and downs—injuries, doubts, and the immense pressure of competition. But I kept showing up.",
-      "Competing in local areas was where I forged my character. Every loss was a lesson, and every win was a stepping stone. I learned that true strength is built in the moments heavily challenges you."
+      "Stepping onto local stages was just the beginning. At the same time, I ventured into social media, determined to share my passion. It was a struggle against the odds—facing doubts, slow growth, and the ups and downs of a pioneer.",
+      "But I kept pushing. I documented the grind, the meals, and the mindset. Every video, every rep was a battle to prove that we could achieve greatness. This period taught me that the path to success is paved with failures you refuse to accept."
     ],
     layout: "image-right"
   },
@@ -45,14 +45,14 @@ const slideData: StorySlide[] = [
     id: 3,
     image: "/pictures/bronz.JPG",
     images: ["/pictures/bronz.JPG", "/pictures/compiting.PNG"],
-    subtitle: "International Level",
-    title: "...To the World Stage",
+    subtitle: "Global Impact",
+    title: "From Medals to a Movement",
     description: [
-      "My dedication took me beyond our borders. Representing my country on international stages, like in South Africa, was a dream come true.",
-      "Standing on that podium and bringing home the Bronze medal was proof that with enough heart and hard work, any goal is achievable. It wasn't just my victory; it was for everyone who believed in me."
+      "Today, I stand on international stages, proudly bringing home accolades like the Bronze medal from South Africa. But my expertise goes beyond the podium. I've dedicated 5 years to mastering professional nutrition prep, combining science with massive practical experience.",
+      "This knowledge now empowers a huge community across TikTok, Instagram, YouTube, and Facebook. I'm here not just to compete, but to lead—helping thousands of you navigate your own healthy journeys with confidence and clarity."
     ],
     layout: "image-left",
-    extraBadge: "South Africa, International Stage" 
+    extraBadge: "International Champion" 
   },
   {
     id: 4,
@@ -66,7 +66,7 @@ const slideData: StorySlide[] = [
   }
 ]
 
-function ImageCarousel({ images, interval = 1000, alt }: { images: string[], interval?: number, alt: string }) {
+function ImageCarousel({ images, interval = 3000, alt }: { images: string[], interval?: number, alt: string }) {
     const [index, setIndex] = useState(0)
   
     useEffect(() => {
