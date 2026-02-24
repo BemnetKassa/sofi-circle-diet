@@ -113,47 +113,86 @@ export function Navbar() {
                     {/* Sidebar */}
                     <motion.div 
                         initial={{ x: "-100%" }}
-                        animate={{ x: 0 }}
+                        animate={{ x: "0%" }}
                         exit={{ x: "-100%" }}
-                        transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                        className="fixed top-0 left-0 w-[80%] max-w-sm h-screen bg-background z-50 p-8 flex flex-col gap-8 md:hidden shadow-2xl overflow-y-auto"
+                        transition={{ type: "spring", damping: 30, stiffness: 300, mass: 0.8 }}
+                        className="fixed top-0 left-0 w-[85%] max-w-sm h-screen bg-background/95 backdrop-blur-xl z-50 p-6 flex flex-col shadow-2xl overflow-y-auto border-r border-border md:hidden"
+                        onClick={(e) => e.stopPropagation()}
                     >
-                        <div className="flex items-center justify-between mb-4">
-                            <Link href="/home" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
-                                <div className="w-8 h-8 bg-linear-to-br from-primary to-green-600 rounded-lg flex items-center justify-center text-white font-bold">
+                        <div className="flex items-center justify-between mb-8 pb-4 border-b border-border/50">
+                            <Link href="/home" onClick={() => setIsOpen(false)} className="flex items-center gap-3 group">
+                                <div className="w-10 h-10 bg-gradient-to-br from-primary to-green-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg group-hover:scale-105 transition-transform">
                                     S
                                 </div>
-                                <span className="font-bold text-lg">Sofi Circle</span>
+                                <span className="font-bold text-xl tracking-tight">Sofi Circle <span className="text-primary">Diet</span></span>
                             </Link>
-                            <button onClick={() => setIsOpen(false)} className="p-2 text-muted-foreground hover:text-foreground">
-                                <X className="w-6 h-6" />
+                            <button 
+                                onClick={() => setIsOpen(false)} 
+                                className="p-2 rounded-full bg-secondary/10 text-muted-foreground hover:bg-secondary/20 hover:text-foreground transition-all"
+                            >
+                                <X className="w-5 h-5" />
                             </button>
                         </div>
                         
-                        <div className="flex flex-col gap-5">
-                            {links.map((link) => (
+                        <div className="flex flex-col gap-2 flex-grow">
+                            {links.map((link, i) => {
+                                if (link.label === "Maed") {
+                                    return (
+                                    <a 
+                                        key={link.href}
+                                        href={link.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={() => setIsOpen(false)}
+                                        className="p-4 rounded-xl bg-gradient-to-r from-orange-500/10 to-orange-600/5 border border-orange-500/20 text-orange-600 font-bold flex items-center justify-between group hover:shadow-md transition-all mb-2"
+                                    >
+                                        <span className="flex items-center gap-3">
+                                            <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+                                            MAED NUTRITION
+                                        </span>
+                                        <motion.span 
+                                            initial={{ x: -5, opacity: 0 }}
+                                            animate={{ x: 0, opacity: 1 }} 
+                                            className="text-orange-400 group-hover:translate-x-1 transition-transform"
+                                        >→</motion.span>
+                                    </a>
+                                    )
+                                }
+
+                                const active = isActive(link.href)
+                                return (
                                 <Link 
                                     key={link.href} 
                                     href={link.href}
                                     onClick={() => setIsOpen(false)}
-                                    className={`text-xl font-semibold transition-colors ${isActive(link.href) ? "text-primary" : "text-foreground hover:text-primary"}`}
+                                    className={`p-3 rounded-xl transition-all flex items-center gap-4 text-lg font-medium group ${active ? "bg-primary/10 text-primary font-bold" : "hover:bg-secondary/10 text-muted-foreground hover:text-foreground"}`}
                                 >
+                                    {/* Dot Indicator */}
+                                    <span className={`w-1.5 h-1.5 rounded-full transition-colors ${active ? "bg-primary" : "bg-transparent group-hover:bg-border"}`}></span>
                                     {link.label}
                                 </Link>
-                            ))}
+                                )
+                            })}
                         </div>
                         
-                        <div className="mt-auto flex flex-col gap-4 pt-10 border-t border-border/50">
+                        <div className="mt-6 pt-6 border-t border-border/50 flex flex-col gap-4">
                             <Link 
                                 href="/login" 
                                 onClick={() => setIsOpen(false)}
-                                className={`text-xl font-semibold transition-colors ${isActive("/login") ? "text-primary" : "text-foreground hover:text-primary"}`}
+                                className={`p-3 rounded-xl transition-all flex items-center gap-4 text-lg font-medium group hover:bg-secondary/10 text-muted-foreground hover:text-foreground`}
                             >
+                                <span className="w-1.5 h-1.5 rounded-full bg-transparent group-hover:bg-border transition-colors"></span>
                                 Login
                             </Link>
-                            <Button asChild className="rounded-full w-full py-6 text-lg shadow-xl shadow-primary/20">
-                                <Link href="/get-plan" onClick={() => setIsOpen(false)}>Get My Meal Plan</Link>
-                            </Button>
+
+                            <Link href="/get-plan" onClick={() => setIsOpen(false)}>
+                                <Button className="w-full text-lg h-12 rounded-xl bg-gradient-to-r from-primary to-green-600 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow">
+                                    Get My Meal Plan
+                                </Button>
+                            </Link>
+                            <p className="text-center text-xs text-muted-foreground mt-2">
+                                © {new Date().getFullYear()} Sofi Circle Diet
+                            </p>
                         </div>
                     </motion.div>
                 </>
