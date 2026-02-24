@@ -15,6 +15,7 @@ export function Navbar() {
   const isActive = (path: string) => pathname?.includes(path)
 
   const links = [
+    { href: "https://maednutritions.com/", label: "Maed", isExternal: true },
     { href: "/home", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/who-it-is-for", label: "Who It's For" },
@@ -48,7 +49,25 @@ export function Navbar() {
         
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-1 items-center bg-secondary/5 px-2 py-1.5 rounded-full border border-secondary/10 backdrop-blur-sm shadow-sm ring-1 ring-white/20">
-           {links.map((link) => (
+           {links.map((link) => {
+             // Special handling for Maed link
+             if (link.label === "Maed") {
+               return (
+                  <a 
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-300 bg-orange-500/10 text-orange-600 border border-orange-500/20 hover:bg-orange-500 hover:text-white hover:shadow-lg hover:shadow-orange-500/30 flex items-center gap-2 group mr-2"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-orange-500 group-hover:bg-white animate-pulse"></span>
+                    MAED
+                    <span className="opacity-0 w-0 group-hover:w-auto group-hover:opacity-100 transition-all duration-300 overflow-hidden whitespace-nowrap text-[10px] ml-1">NUTRITION</span>
+                  </a>
+               );
+             }
+             
+             return (
              <Link 
                 key={link.href} 
                 href={link.href}
@@ -63,7 +82,8 @@ export function Navbar() {
                 )}
                 <span className="relative z-10">{link.label}</span>
              </Link>
-           ))}
+             )
+           })}
         </nav>
         
         <div className="hidden md:flex items-center gap-4">

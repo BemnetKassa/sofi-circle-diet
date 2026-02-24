@@ -17,6 +17,13 @@ export function Footer() {
               <p className="text-gray-400 max-w-sm leading-relaxed text-lg">
                   Empowering you to live a healthier life through personalized nutrition plans designed specifically for your body and lifestyle in Ethiopia.
               </p>
+              
+              {/* Partner Badge */}
+              <a href="https://maednutritions.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-orange-400 text-xs font-semibold hover:bg-orange-500/20 transition-colors mt-2">
+                <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+                Partnered with Maed Nutrition
+              </a>
+
               <div className="flex gap-4 pt-2">
                   {[Facebook, Instagram, Twitter].map((Icon, i) => (
                       <div key={i} className="w-10 h-10 rounded-full bg-white/5 hover:bg-primary hover:text-white transition-all cursor-pointer flex items-center justify-center border border-white/5 hover:scale-110 duration-300">
@@ -63,9 +70,15 @@ export function Footer() {
       
       <div className="container mx-auto mt-6 pt-8 border-t border-white/5 text-center text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center gap-4">
         <p>© {new Date().getFullYear()} Sofi Circle Diet. All rights reserved.</p>
-        <div className="flex gap-6">
-            <span className="hover:text-gray-300 cursor-pointer transition-colors">Privacy Policy</span>
-            <span className="hover:text-gray-300 cursor-pointer transition-colors">Terms of Service</span>
+        <div className="flex gap-6 items-center">
+            {/* Maed Nutrition Footer Link */}
+            <a href="https://maednutritions.com/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition-colors hidden sm:block">
+                Powered by Maed Nutrition
+            </a>
+            <span className="w-1 h-1 rounded-full bg-gray-700 hidden sm:block"></span>
+            
+            <a href="/privacy" className="hover:text-gray-300 cursor-pointer transition-colors">Privacy Policy</a>
+            <a href="/terms" className="hover:text-gray-300 cursor-pointer transition-colors">Terms of Service</a>
         </div>
       </div>
     </footer>
