@@ -141,7 +141,7 @@ export default function MeetTheHeroPage() {
             </section>
 
               {/* Call to Action */}
-            <section className="py-24 px-6 relative overflow-hidden bg-secondary text-secondary-foreground">
+            <section className="py-24 px-6 relative overflow-hidden bg-secondary/90 text-secondary-foreground">
                 {/* Decorative Elements */}
                 <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5"></div>
                 <div className="absolute top-[-50%] left-[-20%] w-[800px] h-[800px] bg-white/20 rounded-full blur-[100px] pointer-events-none"></div>

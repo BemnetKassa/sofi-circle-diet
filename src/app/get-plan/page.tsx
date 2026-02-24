@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { useState, useMemo } from "react"
+import { useState, useMemo, Suspense } from "react"
 import { CheckCircle, ArrowRight, Loader2, ArrowLeft, CreditCard } from "lucide-react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
@@ -45,7 +45,7 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>
 
-export default function GetPlanPage() {
+function GetPlanContent() {
   const searchParams = useSearchParams()
   const planType = searchParams.get("plan") || "standard"
   
@@ -505,5 +505,17 @@ export default function GetPlanPage() {
         </Card>
       </motion.div>
     </div>
+  )
+}
+
+export default function GetPlanPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex h-screen w-full items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    }>
+      <GetPlanContent />
+    </Suspense>
   )
 }
