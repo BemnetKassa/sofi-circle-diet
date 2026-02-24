@@ -26,10 +26,10 @@ export function HeroSection({ containerVariants, itemVariants }: HeroSectionProp
       {/* Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image 
-            src="/pictures/sofi4.webp" 
+            src="/pictures/sofi11.webp" 
             alt="Hero Background" 
             fill 
-            className="object-cover object-center opacity-100" 
+            className="object-cover object-[25%_50%] md:object-center opacity-100" 
             priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/5 via-background/40 to-background/90"></div>
