@@ -1,13 +1,13 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
+import { motion, Variants } from "framer-motion"
 import { Heart, Users, Leaf, ShieldCheck, ArrowRight, Star } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
 export default function AboutPage() {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -17,7 +17,7 @@ export default function AboutPage() {
     },
   }
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
@@ -92,11 +92,11 @@ export default function AboutPage() {
                     >
                          <div className="absolute inset-0 bg-secondary/10 rounded-full blur-3xl transform -translate-x-10 translate-y-10"></div>
                          <Image 
-                            src="/pictures/DSC00653.webp" 
+                            src="/pictures/circle.PNG" 
                             alt="Healthy Ethiopian Food" 
                             width={600} 
                             height={400} 
-                            className="rounded-[2.5rem] shadow-2xl relative z-10 border-4 border-background"
+                            className="rounded-[2.5rem] shadow-2xl relative z-10 border-4 border-background transition-all duration-500 hover:scale-105 hover:rotate-1 hover:shadow-primary/20"
                          />
                     </motion.div>
                     <motion.div
@@ -157,6 +157,12 @@ export default function AboutPage() {
                             height={400} 
                             className="rounded-[2.5rem] shadow-2xl relative z-10 border-4 border-background rotate-2 hover:rotate-0 transition-transform duration-500"
                          />
+                         
+                         {/* Maed Nutrition Tag */}
+                         <div className="absolute -bottom-4 -right-4 z-20 bg-background/90 backdrop-blur-sm text-foreground px-5 py-2.5 rounded-full font-bold shadow-xl border border-secondary/20 flex items-center gap-2 animate-bounce hover:animate-none cursor-pointer">
+                            <span className="w-3 h-3 rounded-full bg-orange-500"></span>
+                            <span className="text-sm">Partnered with <span className="text-orange-500">Maed Nutrition</span></span>
+                         </div>
                     </motion.div>
                  </div>
             </div>
