@@ -19,8 +19,8 @@ export default function TransformationsPage() {
     },
     {
       id: 2,
-      beforeImage: "/pictures/transformations/2025-12-30 14.39.22.jpg",
-      afterImage: "/pictures/transformations/2025-12-30 14.39.54.jpg",
+      beforeImage: "/pictures/transformations/before.jpg",
+      afterImage: "/pictures/transformations/after.jpg",
       name: "Incredible Transformation",
       story: "A journey of discipline and balanced eating led to this incredible physique transformation. It's not just about looking good, but feeling powerful.",
       tags: ["Fat Loss", "Strength"],
