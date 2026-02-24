@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 interface StorySlide {
   id: number
   image: string
+  images?: string[]
   subtitle: string
   title: string
   description: string[]
@@ -20,6 +21,7 @@ const slideData: StorySlide[] = [
   {
     id: 1,
     image: "/pictures/youngSofi.JPG",
+    images: ["/pictures/youngSofi.JPG", "/pictures/youngSofi2.JPG"],
     subtitle: "The Beginning",
     title: "Where It All Started",
     description: [
@@ -42,6 +44,7 @@ const slideData: StorySlide[] = [
   {
     id: 3,
     image: "/pictures/bronz.JPG",
+    images: ["/pictures/bronz.JPG", "/pictures/compiting.PNG"],
     subtitle: "International Level",
     title: "...To the World Stage",
     description: [
@@ -62,6 +65,39 @@ const slideData: StorySlide[] = [
     layout: "image-center"
   }
 ]
+
+function ImageCarousel({ images, interval = 1000, alt }: { images: string[], interval?: number, alt: string }) {
+    const [index, setIndex] = useState(0)
+  
+    useEffect(() => {
+      const timer = setInterval(() => {
+        setIndex((prev) => (prev + 1) % images.length)
+      }, interval)
+      return () => clearInterval(timer)
+    }, [images.length, interval])
+  
+    return (
+      <div className="relative w-full h-full">
+        <AnimatePresence mode="popLayout">
+           <motion.div
+             key={index}
+             initial={{ opacity: 0 }}
+             animate={{ opacity: 1 }}
+             exit={{ opacity: 0 }}
+             transition={{ duration: 0.5 }}
+             className="absolute inset-0"
+           >
+             <Image
+               src={images[index]}
+               alt={alt}
+               fill
+               className="object-cover"
+             />
+           </motion.div>
+        </AnimatePresence>
+      </div>
+    )
+}
 
 export function StorySlider() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -148,12 +184,16 @@ export function StorySlider() {
                         ))}
                      </div>
                      <div className="relative h-[300px] md:h-[400px] w-full max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-4 border-background mt-8">
-                        <Image 
-                            src={currentSlide.image} 
-                            alt={currentSlide.title} 
-                            fill 
-                            className="object-cover" 
-                        />
+                        {currentSlide.images ? (
+                            <ImageCarousel images={currentSlide.images} alt={currentSlide.title} />
+                        ) : (
+                            <Image 
+                                src={currentSlide.image} 
+                                alt={currentSlide.title} 
+                                fill 
+                                className="object-cover" 
+                            />
+                        )}
                      </div>
                 </div>
             )}
@@ -163,12 +203,16 @@ export function StorySlider() {
                 <div className={`grid lg:grid-cols-2 gap-12 items-center ${currentSlide.layout === "image-right" ? "" : ""}`}>
                     {/* Image Side */}
                     <div className={`relative h-[300px] md:h-[500px] w-full rounded-3xl overflow-hidden shadow-xl ${currentSlide.layout === "image-right" ? "lg:order-2" : "lg:order-1"}`}>
-                         <Image 
-                            src={currentSlide.image} 
-                            alt={currentSlide.title} 
-                            fill 
-                            className="object-cover" 
-                        />
+                         {currentSlide.images ? (
+                            <ImageCarousel images={currentSlide.images} alt={currentSlide.title} />
+                         ) : (
+                             <Image 
+                                src={currentSlide.image} 
+                                alt={currentSlide.title} 
+                                fill 
+                                className="object-cover" 
+                            />
+                         )}
                          {currentSlide.extraBadge && (
                              <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-md text-white px-4 py-2 rounded-lg text-sm font-bold border border-white/20">
                                 {currentSlide.extraBadge}
