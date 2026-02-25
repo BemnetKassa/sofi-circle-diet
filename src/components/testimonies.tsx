@@ -1,38 +1,28 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Star } from "lucide-react"
+import Image from "next/image"
 
 const testimonies = [
   {
-    name: "Abebe Kebede",
-    text: "I lost 10kg in 3 months without giving up injera! The plan is so easy to follow.",
-    location: "Addis Ababa"
+    image: "/pictures/transformations/2on1.jpg",
+    alt: "Transformation 1"
   },
   {
-    name: "Sara Tadesse",
-    text: "Finally a diet plan that understands Ethiopian food. I feel more energetic than ever.",
-    location: "Hawassa"
+    image: "/pictures/transformations/after.jpg",
+    alt: "Transformation 2"
   },
   {
-    name: "Dawit Alemu",
-    text: "The workout routines fit perfectly into my busy schedule. Highly recommended!",
-    location: "Adama"
+    image: "/pictures/transformations/before.jpg",
+    alt: "Transformation 3"
+  },
+   {
+    image: "/pictures/transformations/2on1.jpg",
+    alt: "Transformation 4"
   },
   {
-    name: "Helen Bekele",
-    text: "Sofi Circle Diet changed my relationship with food. I cook healthy and delicious meals now.",
-    location: "Bahir Dar"
-  },
-  {
-    name: "Robel Tesfaye",
-    text: "Best investment for my health. The community support is amazing.",
-    location: "Dire Dawa"
-  },
-  {
-    name: "Marta Girma",
-    text: "I gained muscle and learned so much about nutrition. Thank you Sofi!",
-    location: "Addis Ababa"
+    image: "/pictures/transformations/after.jpg",
+    alt: "Transformation 5"
   },
 ]
 
@@ -47,25 +37,21 @@ export function Testimonies() {
           className="flex gap-6 px-4 min-w-max"
           animate={{ x: [0, "-50%"] }}
           transition={{ 
-              duration: 80, // Slower for better readability
+              duration: 40, // Slower for better readability
               repeat: Infinity,
               ease: "linear"
           }}
       >
           {duplicatedTestimonies.map((t, i) => (
-              <div key={i} className="bg-green-500 backdrop-blur-md p-6 rounded-2xl w-[320px] flex-shrink-0 border border-white/20 shadow-xl opacity-90 hover:opacity-100 transition-opacity">
-                  <div className="flex gap-1 mb-3">
-                      {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-secondary text-secondary" />)}
-                  </div>
-                  <p className="text-white font-medium mb-4 whitespace-normal line-clamp-3 leading-relaxed drop-shadow-sm">"{t.text}"</p>
-                  <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-secondary text-secondary-foreground flex items-center justify-center font-bold text-sm shadow-md">
-                          {t.name.charAt(0)}
-                      </div>
-                      <div className="text-left">
-                          <p className="font-bold text-white text-sm drop-shadow-md">{t.name}</p>
-                          <p className="text-white/80 text-xs font-medium">{t.location}</p>
-                      </div>
+              <div key={i} className="bg-white p-3 rounded-2xl w-[220px] h-[250px] flex-shrink-0 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] transition-all duration-300 overflow-hidden relative group hover:-translate-y-2">
+                  <div className="relative w-full h-full rounded-xl overflow-hidden shadow-inner">
+                    <Image 
+                        src={t.image} 
+                        alt={t.alt} 
+                        fill 
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
               </div>
           ))}

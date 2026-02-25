@@ -25,11 +25,15 @@ export function Footer() {
               </a>
 
               <div className="flex gap-4 pt-2">
-                  {[Facebook, Instagram, Twitter].map((Icon, i) => (
-                      <div key={i} className="w-10 h-10 rounded-full bg-white/5 hover:bg-primary hover:text-white transition-all cursor-pointer flex items-center justify-center border border-white/5 hover:scale-110 duration-300">
-                          <Icon className="w-5 h-5" />
-                      </div>
-                  ))}
+                  <a href="#" className="w-10 h-10 rounded-full bg-white/5 hover:bg-primary hover:text-white transition-all cursor-pointer flex items-center justify-center border border-white/5 hover:scale-110 duration-300">
+                      <Facebook className="w-5 h-5" />
+                  </a>
+                  <a href="https://www.instagram.com/sofonias_nebiyu/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 hover:bg-primary hover:text-white transition-all cursor-pointer flex items-center justify-center border border-white/5 hover:scale-110 duration-300">
+                      <Instagram className="w-5 h-5" />
+                  </a>
+                  <a href="#" className="w-10 h-10 rounded-full bg-white/5 hover:bg-primary hover:text-white transition-all cursor-pointer flex items-center justify-center border border-white/5 hover:scale-110 duration-300">
+                      <Twitter className="w-5 h-5" />
+                  </a>
               </div>
           </div>
           
@@ -62,7 +66,7 @@ export function Footer() {
                   </li>
                   <li className="flex items-start gap-3">
                       <MapPin className="w-5 h-5 text-primary shrink-0 mt-1" />
-                      <span className="text-gray-400">Bole Road, Friendship Building<br/>Addis Ababa, Ethiopia</span>
+                      <span className="text-gray-400">Ayat<br/>Addis Ababa, Ethiopia</span>
                   </li>
               </ul>
           </div>

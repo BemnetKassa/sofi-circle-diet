@@ -86,7 +86,7 @@ export default function ContactPage() {
                 >
                     <div className="relative aspect-video w-full rounded-[2rem] overflow-hidden shadow-2xl border-4 border-background rotate-1 hover:rotate-0 transition-all duration-500 group">
                         <Image 
-                            src="/pictures/sofi3.png" 
+                            src="/pictures/sofi12.webp" 
                             alt="Contact Support Team" 
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -103,19 +103,19 @@ export default function ContactPage() {
                             {
                                 icon: <MapPin className="w-5 h-5 text-primary" />,
                                 title: "Visit Us",
-                                desc: "Bole Road, Friendship Building\nAddis Ababa, Ethiopia",
+                                desc: "Ayat\nAddis Ababa, Ethiopia",
                                 bg: "bg-primary/10"
                             },
                             {
                                 icon: <Mail className="w-5 h-5 text-secondary-foreground" />,
                                 title: "Email Us",
-                                desc: "support@soficirclediet.com\nhelp@soficirclediet.com",
+                                desc: "sofonias.neb0940@gmail.com",
                                 bg: "bg-secondary/20"
                             },
                             {
                                 icon: <Phone className="w-5 h-5 text-green-700" />,
                                 title: "Call Us",
-                                desc: "+251 911 234 567\n+251 912 345 678",
+                                desc: "+251 940 256 334\n+251 911 123 456",
                                 bg: "bg-green-100 dark:bg-green-900/30"
                             }
                         ].map((item, i) => (
