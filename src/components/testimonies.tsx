@@ -9,12 +9,12 @@ const testimonies = [
     alt: "Transformation 1"
   },
   {
-    image: "/pictures/transformations/after.jpg",
-    alt: "Transformation 2"
-  },
-  {
     image: "/pictures/transformations/before.jpg",
     alt: "Transformation 3"
+  },
+  {
+    image: "/pictures/transformations/after.jpg",
+    alt: "Transformation 2"
   },
    {
     image: "/pictures/transformations/2on1.jpg",

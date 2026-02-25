@@ -12,7 +12,7 @@ export function CtaSection() {
             <div className="absolute inset-0 bg-primary/80 -z-30"></div>
 
             {/* Background Animations (Testimonies) */}
-            <div className="absolute inset-0 py-8 z-0 mt-60 opacity-100 flex flex-col justify-center ">
+            <div className="absolute inset-0 py-8 z-0 mt-70 opacity-100 flex flex-col justify-center ">
                <Testimonies />
             </div>
 
@@ -27,7 +27,7 @@ export function CtaSection() {
                 <h2 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">Ready to Change Your Life?</h2>
                 <p className="text-xl md:text-2xl opacity-90 mb-10 max-w-2xl mx-auto">Join hundreds of others in Ethiopia who found their path to health with Sofi Circle Diet.</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button size="lg" variant="secondary" className="h-16 px-12 text-xl rounded-full font-bold shadow-2xl hover:scale-105 transition-transform" asChild>
+                    <Button size="lg" variant="secondary" className="h-10 md:h-16 px-6 md:px-12 text-base md:text-xl rounded-full font-bold shadow-2xl hover:scale-105 transition-transform" asChild>
                         <Link href="/get-plan">Get My Custom Plan</Link>
                     </Button>
                 </div>
