@@ -205,7 +205,7 @@ export default function NutritionPlanPage() {
                 className="mt-12 flex justify-center"
             >
                 <Link href="/contact">
-                    <Button variant="ghost" className="text-xl md:text-2xl font-bold group hover:bg-transparent hover:text-primary transition-colors gap-3 py-6 px-8">
+                    <Button variant="ghost" className="text-xl md:text-2xl font-bold group border-red-500 hover:bg-yellow-200 hover:text-primary transition-colors gap-3 py-6 px-8">
                         Get free consult call now 
                         <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
                     </Button>
@@ -218,33 +218,41 @@ export default function NutritionPlanPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="mt-40 space-y-16"
+                className="mt-25 space-y-10"
             >
                 <div className="text-center space-y-4">
                     <h2 className="text-4xl md:text-5xl font-black tracking-tight underline decoration-secondary decoration-4 underline-offset-8">What's Inside Your Plan?</h2>
                     <p className="text-muted-foreground text-xl max-w-2xl mx-auto font-medium">Detailed, beautiful, and easy to follow. Here is a sneak peek into our expertly crafted meal plans.</p>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6">
                     {[
-                        { src: "/pictures/sofi1.png", alt: "Meal Breakdown" },
-                        { src: "/pictures/sofi2.png", alt: "Nutritional Info" },
-                        { src: "/pictures/sofi3.png", alt: "Shopping List" },
-                        { src: "/pictures/sofi4.png", alt: "Daily Schedule" },
-                        { src: "/pictures/sofi5.png", alt: "Portion Guide" }
+                        { src: "/pictures/meal-breakdown.avif", alt: "Meal Breakdown" },
+                        { src: "/pictures/nutrition-info.png", alt: "Nutritional Info" },
+                        { src: "/pictures/shoping-list.png", alt: "Shopping List" },
+                        { src: "/pictures/daily-schedule.png", alt: "Daily Schedule" },
+                        { src: "/pictures/portion-guide.png", alt: "Portion Guide" }
                     ].map((img, i) => (
                         <motion.div 
                             key={i}
                             whileHover={{ y: -10, rotate: i % 2 === 0 ? 2 : -2 }}
-                            className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl border-4 border-white group cursor-zoom-in"
+                            className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl border-2 md:border-4 border-white group cursor-zoom-in"
                         >
                             <Image 
                                 src={img.src} 
                                 alt={img.alt} 
                                 fill 
-                                className="object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+                                className="object-cover transition-all duration-500 md:grayscale md:group-hover:grayscale-0" 
                             />
-                            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
+                            {/* Overlay Gradient */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 md:hidden"></div>
+                            
+                            {/* Alt Text Tag */}
+                            <div className="absolute bottom-2 left-2 right-2 md:top-2 md:bottom-auto md:left-2 md:right-2">
+                                <div className="bg-black/60 backdrop-blur-md rounded-lg px-2 py-1.5 md:p-2 text-center transform transition-transform duration-300 md:translate-y-[-150%] md:group-hover:translate-y-0">
+                                    <p className="text-white text-[10px] md:text-xs font-bold leading-tight uppercase tracking-wider">{img.alt}</p>
+                                </div>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
