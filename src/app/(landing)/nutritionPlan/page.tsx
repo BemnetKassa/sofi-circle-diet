@@ -125,7 +125,7 @@ export default function NutritionPlanPage() {
                         ))}
                     </ul>
 
-                    <Button variant="outline" size="lg" className="w-full h-16 text-xl font-black rounded-2xl border-2 hover:bg-primary/5 hover:border-primary hover:text-primary transition-all duration-300" asChild>
+                    <Button variant="outline" size="lg" className="w-full h-12 text-lg md:h-16 md:text-xl font-black rounded-2xl border-2 hover:bg-primary/5 hover:border-primary hover:text-primary transition-all duration-300" asChild>
                         <Link href="/get-plan?plan=standard">SELECT STANDARD</Link>
                     </Button>
                 </motion.div>

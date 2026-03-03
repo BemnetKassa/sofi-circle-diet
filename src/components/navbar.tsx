@@ -186,7 +186,7 @@ export function Navbar() {
                             </Link>
 
                             <Link href="/get-plan" onClick={() => setIsOpen(false)}>
-                                <Button className="w-full text-lg h-12 rounded-xl bg-gradient-to-r from-primary to-green-600 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow">
+                                <Button className="w-full text-base h-10 rounded-xl bg-gradient-to-r from-primary to-green-600 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow">
                                     Get My Meal Plan
                                 </Button>
                             </Link>

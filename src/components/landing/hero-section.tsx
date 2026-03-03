@@ -76,12 +76,12 @@ export function HeroSection({ containerVariants, itemVariants }: HeroSectionProp
           </motion.p>
           
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-xl shadow-primary/25 hover:scale-105 transition-transform duration-200" asChild>
+            <Button size="lg" className="h-10 px-5 text-sm md:h-14 md:px-8 md:text-lg rounded-full shadow-xl shadow-primary/25 hover:scale-105 transition-transform duration-200" asChild>
               <Link href="/get-plan">
                   Get My Meal Plan <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
-            <Button variant="outline" size="lg" className="h-14 px-8 text-lg rounded-full border-2 hover:bg-secondary/10 hover:border-secondary hover:text-secondary-foreground transition-all duration-200" asChild>
+            <Button variant="outline" size="lg" className="h-10 px-5 text-sm md:h-14 md:px-8 md:text-lg rounded-full border-2 hover:bg-secondary/10 hover:border-secondary hover:text-secondary-foreground transition-all duration-200" asChild>
               <Link href="/nutritionPlan">
                 View Sample Plan
               </Link>
