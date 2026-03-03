@@ -196,6 +196,22 @@ export default function NutritionPlanPage() {
                 </motion.div>
             </div>
 
+            {/* Free Consult Call Button */}
+            <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="mt-12 flex justify-center"
+            >
+                <Link href="/contact">
+                    <Button variant="ghost" className="text-xl md:text-2xl font-bold group hover:bg-transparent hover:text-primary transition-colors gap-3 py-6 px-8">
+                        Get free consult call now 
+                        <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                    </Button>
+                </Link>
+            </motion.div>
+
             {/* Showcase Section */}
             <motion.div 
                 initial={{ opacity: 0, y: 50 }}
