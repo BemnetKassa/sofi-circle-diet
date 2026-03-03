@@ -189,7 +189,7 @@ export default function NutritionPlanPage() {
                             </ul>
                         </div>
 
-                        <Button size="lg" className="w-full h-18 text-2xl font-black rounded-2xl shadow-2xl shadow-primary/30 bg-primary hover:bg-primary/90 hover:scale-[1.03] transition-all duration-300 py-8" asChild>
+                        <Button size="lg" className="w-full h-14 md:h-[4.5rem] text-xl md:text-2xl font-black rounded-2xl shadow-2xl shadow-primary/30 bg-primary hover:bg-primary/90 hover:scale-[1.03] transition-all duration-300 py-4 md:py-8" asChild>
                             <Link href="/get-plan?plan=premium">GO PREMIUM NOW</Link>
                         </Button>
                    </div>
@@ -205,7 +205,7 @@ export default function NutritionPlanPage() {
                 className="mt-12 flex justify-center"
             >
                 <Link href="/contact">
-                    <Button variant="ghost" className="text-xl md:text-2xl font-bold group border-red-500 hover:bg-yellow-200 hover:text-primary transition-colors gap-3 py-6 px-8">
+                    <Button variant="ghost" className="text-lg md:text-2xl font-bold group border-red-500 hover:bg-yellow-200 hover:text-primary transition-colors gap-3 py-3 px-4 md:py-6 md:px-8">
                         Get free consult call now 
                         <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
                     </Button>
@@ -275,7 +275,7 @@ export default function NutritionPlanPage() {
                     <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter">Ready to see <span className="text-primary italic">yourself</span> in the mirror differently?</h2>
                     <p className="text-zinc-400 text-xl max-w-2xl mx-auto font-medium italic">"The best time to start was yesterday. The second best time is right now. Let's make it happen together."</p>
                     <div className="pt-6 w-full flex justify-center">
-                        <Button size="lg" className="w-full sm:w-auto h-auto sm:h-20 py-6 sm:py-0 px-6 sm:px-12 text-lg sm:text-2xl font-black rounded-full shadow-2xl shadow-primary/40 bg-primary hover:scale-110 transition-transform whitespace-normal" asChild>
+                        <Button size="lg" className="w-full sm:w-auto h-auto sm:h-20 py-3 sm:py-0 px-4 sm:px-12 text-base sm:text-2xl font-black rounded-full shadow-2xl shadow-primary/40 bg-primary hover:scale-110 transition-transform whitespace-normal" asChild>
                             <Link href="/get-plan" className="flex items-center justify-center">
                                 <span className="text-center">START YOUR TRANSFORMATION</span>
                                 <ArrowRight className="ml-3 w-6 h-6 sm:w-8 sm:h-8 shrink-0" />

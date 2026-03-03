@@ -24,7 +24,7 @@ export function AdminQuickActions() {
                     <Button 
                         key={action.label} 
                         variant="outline" 
-                        className="w-full justify-start h-14 rounded-2xl font-black uppercase text-[10px] tracking-[0.15em] border-border/40 hover:border-primary/30 hover:bg-primary/5 hover:text-primary transition-all group/btn shadow-sm"
+                        className="w-full justify-start h-10 md:h-14 rounded-2xl font-black uppercase text-[10px] tracking-[0.15em] border-border/40 hover:border-primary/30 hover:bg-primary/5 hover:text-primary transition-all group/btn shadow-sm"
                         asChild
                     >
                         <Link href={action.href}>
