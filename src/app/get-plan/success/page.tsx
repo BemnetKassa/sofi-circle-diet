@@ -14,6 +14,11 @@ import {
   Award,
   Calendar,
   Heart,
+  Zap,
+  Brain,
+  Shield,
+  Star,
+  ArrowRight,
 } from "lucide-react"
 
 import Link from "next/link"
@@ -53,7 +58,6 @@ export default function SubmissionSuccessPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Retrieve data from sessionStorage
     const storedAnalysis = sessionStorage.getItem("geminiAnalysis")
     const storedUserData = sessionStorage.getItem("userFormData")
     
@@ -66,14 +70,11 @@ export default function SubmissionSuccessPage() {
     setLoading(false)
   }, [])
 
-  // Generate 3-month transformation prediction based on AI analysis and user data
   const getTransformationPrediction = () => {
     if (!userData || !aiAnalysis) return null
     
     const weight = parseFloat(userData.weight)
     const goal = userData.goal
-    const bodyType = aiAnalysis.bodyType
-    const fitnessLevel = aiAnalysis.fitnessLevel
     
     let predictions = {
       weightChange: "",
@@ -131,240 +132,260 @@ export default function SubmissionSuccessPage() {
   const transformation = getTransformationPrediction()
 
   return (
-    <div className="min-h-screen py-12 px-4 bg-muted/20 flex flex-col items-center justify-center">
+    <div className="min-h-screen py-16 px-4 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 flex flex-col items-center justify-center">
       
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/5 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/3 rounded-full blur-3xl" />
+      </div>
+
       <motion.div
-        initial={{ scale: 0.85, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ type: "spring", duration: 0.8 }}
-        className="w-full max-w-4xl"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="w-full max-w-5xl relative z-10"
       >
-        <Card className="border-primary/20 shadow-xl overflow-hidden">
+        {/* Success Header Card */}
+        <motion.div
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.2, type: "spring" }}
+          className="text-center mb-8"
+        >
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-lg mb-6">
+            <CheckCircle className="w-10 h-10 text-white" />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent mb-3">
+            Welcome, {userData?.firstName || "there"}! 👋
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Your personalized nutrition plan is being prepared using advanced AI analysis
+          </p>
+        </motion.div>
+
+        {/* Main Content Grid */}
+        <div className="space-y-6">
           
-          {/* Top Gradient Line */}
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary" />
+          {/* Current Body Condition - Glassmorphic Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="backdrop-blur-sm bg-white/50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden"
+          >
+            <div className="bg-gradient-to-r from-primary/10 to-secondary/10 px-6 py-4 border-b border-slate-200 dark:border-slate-800">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-primary/20 rounded-xl">
+                  <Activity className="w-5 h-5 text-primary" />
+                </div>
+                <h2 className="text-xl font-semibold">Current Body Condition</h2>
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="text-center md:text-left">
+                  <p className="text-sm text-muted-foreground mb-1">Body Type</p>
+                  <p className="text-lg font-semibold text-primary">{aiAnalysis?.bodyType || "Analyzing..."}</p>
+                </div>
+                <div className="text-center md:text-left">
+                  <p className="text-sm text-muted-foreground mb-1">Fitness Level</p>
+                  <p className="text-lg font-semibold">{aiAnalysis?.fitnessLevel || "Analyzing..."}</p>
+                </div>
+                <div className="text-center md:text-left">
+                  <p className="text-sm text-muted-foreground mb-1">Body Fat Level</p>
+                  <p className="text-lg font-semibold">{aiAnalysis?.fatLevel || "Analyzing..."}</p>
+                </div>
+                <div className="text-center md:text-left">
+                  <p className="text-sm text-muted-foreground mb-1">Muscle Development</p>
+                  <p className="text-lg font-semibold">{aiAnalysis?.muscleDevelopment || "Analyzing..."}</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
-          <CardContent className="p-6 space-y-8">
-            
-            {/* Success Header */}
-            <div className="text-center space-y-4">
-              <motion.div
-                initial={{ scale: 0, rotate: -180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
-                className="w-20 h-20 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mx-auto"
-              >
-                <CheckCircle className="w-10 h-10 text-green-600 dark:text-green-400" />
-              </motion.div>
-
-              <motion.h1
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="text-3xl font-bold"
-              >
-                Welcome, {userData?.firstName || "there"}! 🎉
-              </motion.h1>
-
-              <motion.p
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="text-muted-foreground"
-              >
-                Your personalized nutrition plan is being prepared based on AI analysis
-              </motion.p>
+          {/* AI Recommendations - Split Layout */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="grid md:grid-cols-2 gap-6"
+          >
+            {/* Nutrition Card */}
+            <div className="backdrop-blur-sm bg-white/50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden">
+              <div className="bg-gradient-to-r from-emerald-500/10 to-emerald-600/10 px-6 py-4 border-b border-slate-200 dark:border-slate-800">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-emerald-500/20 rounded-xl">
+                    <Apple className="w-5 h-5 text-emerald-600" />
+                  </div>
+                  <h2 className="text-xl font-semibold">Nutrition Plan</h2>
+                </div>
+              </div>
+              <div className="p-6 space-y-4">
+                <div className="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-800">
+                  <span className="text-muted-foreground">Daily Calories</span>
+                  <span className="text-2xl font-bold text-primary">{aiAnalysis?.recommendedCalories || "Calculating..."}</span>
+                </div>
+                <div className="flex justify-between items-center pb-3 border-b border-slate-200 dark:border-slate-800">
+                  <span className="text-muted-foreground">Daily Protein</span>
+                  <span className="text-2xl font-bold text-primary">{aiAnalysis?.recommendedProtein || "Calculating..."}</span>
+                </div>
+                <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-4 mt-2">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {aiAnalysis?.mealRecommendation || "Personalized meal plan will be provided in your complete plan"}
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* AI Analysis Section */}
-            {aiAnalysis && !loading && (
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="space-y-6"
-              >
-                {/* Current Body Condition */}
-                <div className="rounded-xl border bg-muted/30 p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Activity className="w-6 h-6 text-primary" />
-                    <h2 className="text-xl font-semibold">Your Current Body Condition</h2>
+            {/* Workout Card */}
+            <div className="backdrop-blur-sm bg-white/50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden">
+              <div className="bg-gradient-to-r from-orange-500/10 to-orange-600/10 px-6 py-4 border-b border-slate-200 dark:border-slate-800">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-orange-500/20 rounded-xl">
+                    <Dumbbell className="w-5 h-5 text-orange-600" />
                   </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <div>
-                        <p className="text-sm text-muted-foreground">Body Type</p>
-                        <p className="font-medium">{aiAnalysis.bodyType || "Analyzing..."}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">Fitness Level</p>
-                        <p className="font-medium">{aiAnalysis.fitnessLevel || "Analyzing..."}</p>
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <div>
-                        <p className="text-sm text-muted-foreground">Body Fat Level</p>
-                        <p className="font-medium">{aiAnalysis.fatLevel || "Analyzing..."}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-muted-foreground">Muscle Development</p>
-                        <p className="font-medium">{aiAnalysis.muscleDevelopment || "Analyzing..."}</p>
-                      </div>
-                    </div>
-                  </div>
+                  <h2 className="text-xl font-semibold">Workout Plan</h2>
                 </div>
-
-                {/* AI Recommendations */}
-                <div className="rounded-xl border bg-primary/5 p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Sparkles className="w-6 h-6 text-primary" />
-                    <h2 className="text-xl font-semibold">AI-Powered Recommendations</h2>
-                  </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <div className="flex items-center gap-2 mb-3">
-                        <Apple className="w-5 h-5 text-green-600" />
-                        <h3 className="font-semibold">Nutrition Guidelines</h3>
-                      </div>
-                      <div className="space-y-2 text-sm">
-                        <p><strong>Daily Calories:</strong> {aiAnalysis.recommendedCalories || "Calculating..."}</p>
-                        <p><strong>Daily Protein:</strong> {aiAnalysis.recommendedProtein || "Calculating..."}g</p>
-                        <div className="bg-background/50 rounded-lg p-3 mt-2">
-                          <p className="text-xs text-muted-foreground">{aiAnalysis.mealRecommendation || "Personalized meal plan will be provided in your complete plan"}</p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <div className="flex items-center gap-2 mb-3">
-                        <Dumbbell className="w-5 h-5 text-orange-600" />
-                        <h3 className="font-semibold">Workout Guidelines</h3>
-                      </div>
-                      <div className="bg-background/50 rounded-lg p-3">
-                        <p className="text-xs text-muted-foreground">{aiAnalysis.workoutRecommendation || "Personalized workout plan will be provided in your complete plan"}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* 3-Month Transformation Prediction */}
-                {transformation && (
-                  <div className="rounded-xl border-2 border-primary/20 bg-gradient-to-br from-primary/10 to-secondary/10 p-6">
-                    <div className="flex items-center gap-3 mb-4">
-                      <Calendar className="w-6 h-6 text-primary" />
-                      <h2 className="text-xl font-semibold">Your 3-Month Transformation Potential</h2>
-                    </div>
-                    
-                    <div className="space-y-4">
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div className="flex items-start gap-2">
-                          <Target className="w-5 h-5 text-primary mt-0.5" />
-                          <div>
-                            <p className="text-sm font-semibold">Expected Weight Change</p>
-                            <p className="text-sm text-muted-foreground">{transformation.weightChange}</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start gap-2">
-                          <Heart className="w-5 h-5 text-primary mt-0.5" />
-                          <div>
-                            <p className="text-sm font-semibold">Body Composition</p>
-                            <p className="text-sm text-muted-foreground">{transformation.bodyFatChange}</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start gap-2">
-                          <Award className="w-5 h-5 text-primary mt-0.5" />
-                          <div>
-                            <p className="text-sm font-semibold">Muscle & Strength</p>
-                            <p className="text-sm text-muted-foreground">{transformation.muscleChange}</p>
-                            <p className="text-sm text-muted-foreground">{transformation.strengthGain}</p>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-start gap-2">
-                          <TrendingUp className="w-5 h-5 text-primary mt-0.5" />
-                          <div>
-                            <p className="text-sm font-semibold">Energy & Appearance</p>
-                            <p className="text-sm text-muted-foreground">{transformation.energyLevel}</p>
-                            <p className="text-sm text-muted-foreground">{transformation.appearance}</p>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="border-t pt-4 mt-2">
-                        <p className="text-sm font-semibold mb-2">Key Milestones:</p>
-                        <ul className="space-y-1">
-                          {transformation.keyMilestones.map((milestone, index) => (
-                            <li key={index} className="text-sm text-muted-foreground flex items-start gap-2">
-                              <span className="text-primary">✓</span>
-                              {milestone}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* AI Summary */}
-                <div className="rounded-xl bg-muted/20 p-5">
-                  <div className="flex items-start gap-3">
-                    <Sparkles className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                    <div>
-                      <h3 className="font-semibold mb-1">AI Assessment Summary</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {aiAnalysis.summary || `Based on your profile as a ${userData?.age}-year-old ${userData?.gender} with ${userData?.goal.replace("_", " ")} goals, we've created a personalized plan. With consistent effort, you can achieve significant transformation in 3 months.`}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-
-            {/* Loading State */}
-            {loading && (
-              <div className="text-center py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-                <p className="mt-4 text-muted-foreground">Loading your AI analysis...</p>
               </div>
-            )}
-
-            {/* Next Steps */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              className="rounded-xl border border-secondary/20 bg-secondary/10 p-6"
-            >
-              <div className="flex items-start gap-3">
-                <Clock3 className="w-5 h-5 mt-0.5 text-secondary-foreground shrink-0" />
-                <div className="space-y-2">
-                  <p className="font-semibold">
-                    What Happens Next?
+              <div className="p-6">
+                <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-4">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {aiAnalysis?.workoutRecommendation || "Personalized workout plan will be provided in your complete plan"}
                   </p>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Our nutritionist will verify your payment receipt</li>
-                    <li>• Your AI analysis will be reviewed and refined</li>
-                    <li>• A detailed 3-month personalized plan will be created</li>
-                    <li>• You'll receive your complete plan within 24-48 hours</li>
-                    <li>• Follow-up support and adjustments included</li>
-                  </ul>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* 3-Month Transformation - Premium Card */}
+          {transformation && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 rounded-2xl border-2 border-primary/20 shadow-xl overflow-hidden"
+            >
+              <div className="bg-gradient-to-r from-primary to-secondary px-6 py-4">
+                <div className="flex items-center gap-3">
+                  <Calendar className="w-5 h-5 text-white" />
+                  <h2 className="text-xl font-semibold text-white">Your 3-Month Transformation Blueprint</h2>
+                </div>
+              </div>
+              <div className="p-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                  <div className="text-center p-4 bg-white/50 dark:bg-slate-900/50 rounded-xl">
+                    <Target className="w-6 h-6 text-primary mx-auto mb-2" />
+                    <p className="text-xs text-muted-foreground mb-1">Expected Change</p>
+                    <p className="text-sm font-semibold">{transformation.weightChange}</p>
+                  </div>
+                  <div className="text-center p-4 bg-white/50 dark:bg-slate-900/50 rounded-xl">
+                    <Heart className="w-6 h-6 text-rose-500 mx-auto mb-2" />
+                    <p className="text-xs text-muted-foreground mb-1">Body Composition</p>
+                    <p className="text-sm font-semibold">{transformation.bodyFatChange}</p>
+                  </div>
+                  <div className="text-center p-4 bg-white/50 dark:bg-slate-900/50 rounded-xl">
+                    <Zap className="w-6 h-6 text-amber-500 mx-auto mb-2" />
+                    <p className="text-xs text-muted-foreground mb-1">Muscle & Strength</p>
+                    <p className="text-sm font-semibold">{transformation.muscleChange}</p>
+                  </div>
+                  <div className="text-center p-4 bg-white/50 dark:bg-slate-900/50 rounded-xl">
+                    <TrendingUp className="w-6 h-6 text-emerald-500 mx-auto mb-2" />
+                    <p className="text-xs text-muted-foreground mb-1">Energy & Appearance</p>
+                    <p className="text-sm font-semibold">{transformation.energyLevel}</p>
+                  </div>
+                </div>
+                
+                <div className="bg-white/50 dark:bg-slate-900/50 rounded-xl p-5">
+                  <p className="text-sm font-semibold mb-3 flex items-center gap-2">
+                    <Star className="w-4 h-4 text-primary" />
+                    Key Milestones
+                  </p>
+                  <div className="grid md:grid-cols-3 gap-3">
+                    {transformation.keyMilestones.map((milestone, index) => (
+                      <div key={index} className="flex items-start gap-2 p-3 bg-gradient-to-r from-primary/5 to-transparent rounded-lg">
+                        <CheckCircle className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                        <span className="text-xs text-muted-foreground">{milestone}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
-          </CardContent>
+          )}
 
-          <CardFooter className="justify-center gap-4 pb-6">
-            <Button asChild variant="outline" className="rounded-full px-8">
-              <Link href="/">
-                Return Home
-              </Link>
+          {/* AI Summary Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="backdrop-blur-sm bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl border border-primary/20 shadow-xl p-6"
+          >
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-primary/20 rounded-xl">
+                <Brain className="w-6 h-6 text-primary" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg mb-2">AI Assessment Summary</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {aiAnalysis?.summary || `Based on your profile as a ${userData?.age}-year-old ${userData?.gender} with ${userData?.goal?.replace("_", " ")} goals, we've created a personalized plan. With consistent effort, you can achieve significant transformation in 3 months.`}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Next Steps - Timeline Style */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+            className="rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden"
+          >
+            <div className="bg-slate-100 dark:bg-slate-800 px-6 py-4">
+              <div className="flex items-center gap-3">
+                <Clock3 className="w-5 h-5 text-primary" />
+                <h2 className="text-xl font-semibold">What Happens Next?</h2>
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="space-y-4">
+                {[
+                  "Our nutritionist will verify your payment receipt",
+                  "Your AI analysis will be reviewed and refined",
+                  "A detailed 3-month personalized plan will be created",
+                  "You'll receive your complete plan within 24-48 hours",
+                  "Follow-up support and adjustments included"
+                ].map((step, index) => (
+                  <div key={index} className="flex items-center gap-3 group">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-sm font-semibold group-hover:scale-110 transition-transform">
+                      {index + 1}
+                    </div>
+                    <span className="text-muted-foreground group-hover:text-foreground transition-colors">
+                      {step}
+                    </span>
+                    {index < 4 && <ArrowRight className="w-4 h-4 text-muted-foreground ml-auto" />}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Action Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+            className="flex justify-center gap-4 pt-4"
+          >
+            <Button asChild variant="outline" className="rounded-full px-8 hover:scale-105 transition-transform">
+              <Link href="/">Return Home</Link>
             </Button>
-          </CardFooter>
-        </Card>
+            <Button asChild className="rounded-full px-8 bg-gradient-to-r from-primary to-secondary hover:shadow-lg hover:scale-105 transition-all">
+              <Link href="/dashboard">View Dashboard</Link>
+            </Button>
+          </motion.div>
+        </div>
       </motion.div>
     </div>
   )
