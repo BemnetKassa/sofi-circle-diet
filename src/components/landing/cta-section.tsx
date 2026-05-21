@@ -7,32 +7,89 @@ import { Testimonies } from "@/components/testimonies"
 
 export function CtaSection() {
     return (
-        <section className="py-24 px-6 relative overflow-hidden flex items-center justify-center text-white isolate">
-            {/* Background Color Layer */}
-            <div className="absolute inset-0 bg-primary/80 -z-30"></div>
+        <section className="relative py-8 sm:py-16 px-6 overflow-hidden isolate">
 
-            {/* Background Animations (Testimonies) */}
-            <div className="absolute inset-0 py-8 z-0 mt-70 opacity-100 flex flex-col justify-center ">
-               <Testimonies />
+            {/* BACKGROUND */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary via-green-600 to-emerald-500 -z-30" />
+            <div className="absolute inset-0 opacity-10 bg-[url('/grid.svg')] -z-20" />
+
+            {/* glow blobs */}
+            <motion.div
+                animate={{ y: [0, 20, 0], x: [0, -10, 0] }}
+                transition={{ duration: 12, repeat: Infinity }}
+                className="absolute top-[-120px] right-[-120px] w-[420px] h-[420px] bg-white/20 rounded-full blur-[120px] -z-10"
+            />
+
+            <motion.div
+                animate={{ y: [0, -20, 0], x: [0, 10, 0] }}
+                transition={{ duration: 15, repeat: Infinity }}
+                className="absolute bottom-[-120px] left-[-120px] w-[360px] h-[360px] bg-black/10 rounded-full blur-[120px] -z-10"
+            />
+
+            {/* TESTIMONIES */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center opacity-75">
+                <Testimonies />
             </div>
 
-            {/* Overlay to ensure text readability */}
-            <div className="absolute inset-0 bg-primary/70 backdrop-blur-[4px] -z-10"></div>
-            
-            {/* Gradient Blobs */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white opacity-10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none -z-20"></div>
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary opacity-20 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3 pointer-events-none -z-20"></div>
-            
-            <div className="container mx-auto text-center relative z-20 max-w-4xl">
-                <h2 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">Ready to Change Your Life?</h2>
-                <p className="text-xl md:text-2xl opacity-90 mb-10 max-w-2xl mx-auto">Join hundreds of others in Ethiopia who found their path to health with Sofi Circle Diet.</p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button size="lg" variant="secondary" className="h-10 md:h-16 px-6 md:px-12 text-base md:text-xl rounded-full font-bold shadow-2xl hover:scale-105 transition-transform" asChild>
-                        <Link href="/get-plan">Get My Custom Plan</Link>
-                    </Button>
-                </div>
-                <p className="mt-8 opacity-70 text-sm">One-time payment • Lifetime access • Money-back guarantee</p>
+            {/* overlay */}
+            <div className="absolute inset-0 bg-black/10 pointer-events-none z-10" />
+
+            {/* CONTENT */}
+            <div className="relative z-20 max-w-3xl mx-auto text-center">
+
+                <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                 className="
+                    bg-transparent
+                    backdrop-blur-none
+                    border-0
+                    shadow-none
+
+                    sm:bg-white/10
+                    sm:backdrop-blur-sm
+                    sm:border sm:border-white/20
+                    sm:shadow-xl
+
+                    rounded-2xl
+                    p-4 sm:p-6 md:p-8
+                    max-w-xl mx-auto
+                    "
+                    >
+
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">
+                        Ready to Transform Your Body?
+                    </h2>
+
+                    <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-white max-w-md mx-auto">
+                        Join hundreds in Ethiopia achieving real results with personalized nutrition plans.
+                    </p>
+
+                    <div className="mt-5 sm:mt-6 flex justify-center">
+                        <Button
+                            size="lg"
+                            className="
+                                h-10 sm:h-11 md:h-12
+                                px-6 sm:px-8
+                                rounded-full font-semibold
+                                bg-white text-primary
+                                hover:bg-white/90 shadow-md
+                                transition hover:scale-105
+                            "
+                            asChild
+                        >
+                            <Link href="/get-plan">Get My Plan</Link>
+                        </Button>
+                    </div>
+
+                    <p className=" mt-12 sm:mt-4 text-white sm:text-white/60 text-xs sm:text-sm">
+                        One-time payment • Personalized plan • Nutritionist reviewed
+                    </p>
+
+                </motion.div>
             </div>
+
         </section>
     )
 }

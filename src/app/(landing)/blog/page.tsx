@@ -15,7 +15,7 @@ const BLOG_POSTS = [
     date: "Feb 20, 2026",
     category: "Nutrition",
     readingTime: "5 min read",
-    image: "/pictures/DSC00653.webp", 
+    image: "/pictures/DSC00749.webp", 
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const BLOG_POSTS = [
     date: "Feb 15, 2026",
     category: "Fitness",
     readingTime: "8 min read",
-    image: "/pictures/DSC00725.webp",
+    image: "/pictures/sofi12.webp",
   },
   {
     id: 3,
@@ -42,7 +42,7 @@ const BLOG_POSTS = [
     date: "Feb 05, 2026",
     category: "Lifestyle",
     readingTime: "6 min read",
-    image: "/pictures/DSC00749.webp",
+    image: "/pictures/Daytime Nap.jpg",
   }
 ]
 

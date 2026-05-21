@@ -176,14 +176,6 @@ export function Navbar() {
                         </div>
                         
                         <div className="mt-6 pt-6 border-t border-border/50 flex flex-col gap-4">
-                            <Link 
-                                href="/login" 
-                                onClick={() => setIsOpen(false)}
-                                className={`p-3 rounded-xl transition-all flex items-center gap-4 text-lg font-medium group hover:bg-secondary/10 text-muted-foreground hover:text-foreground`}
-                            >
-                                <span className="w-1.5 h-1.5 rounded-full bg-transparent group-hover:bg-border transition-colors"></span>
-                                Login
-                            </Link>
 
                             <Link href="/get-plan" onClick={() => setIsOpen(false)}>
                                 <Button className="w-full text-base h-10 rounded-xl bg-gradient-to-r from-primary to-green-600 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow">
