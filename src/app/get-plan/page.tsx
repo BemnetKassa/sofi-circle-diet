@@ -51,6 +51,9 @@ import {
     motion,
 } from "framer-motion"
 
+import { useRouter } from "next/navigation"
+
+
 const formSchema = z.object({
     firstName: z.string().min(2, "First name is required"),
 
@@ -85,6 +88,8 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>
 
 function GetPlanContent() {
+    const router = useRouter()
+
     const searchParams = useSearchParams()
 
     const planType = searchParams.get("plan") || "standard"
@@ -123,6 +128,7 @@ function GetPlanContent() {
     const formValues = watch()
 
     const onSubmit = async (data: FormValues) => {
+        
         if (!receiptFile) {
             alert("Please upload your payment receipt.")
             return
@@ -151,7 +157,7 @@ function GetPlanContent() {
             const result = await response.json()
 
             if (result.success) {
-                setIsSuccess(true)
+                router.push("/get-plan/success")
             } else {
                 alert(result.message || "Failed to submit request.")
             }
@@ -233,46 +239,6 @@ function GetPlanContent() {
             x: direction < 0 ? 50 : -50,
             opacity: 0,
         }),
-    }
-
-    if (isSuccess) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-muted/20 p-6">
-                <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    className="w-full max-w-md"
-                >
-                    <Card className="text-center py-10 shadow-xl">
-                        <CardContent className="flex flex-col items-center gap-6">
-                            <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center">
-                                <CheckCircle className="w-10 h-10 text-green-600" />
-                            </div>
-
-                            <div className="space-y-2">
-                                <h2 className="text-3xl font-bold">
-                                    Submission Successful
-                                </h2>
-
-                                <p className="text-muted-foreground">
-                                    Your request and payment receipt were sent
-                                    successfully.
-                                </p>
-
-                                <p className="text-muted-foreground">
-                                    The nutritionist will review your submission
-                                    shortly.
-                                </p>
-                            </div>
-
-                            <Button asChild>
-                                <Link href="/">Back to Home</Link>
-                            </Button>
-                        </CardContent>
-                    </Card>
-                </motion.div>
-            </div>
-        )
     }
 
     return (
