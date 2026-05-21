@@ -43,15 +43,29 @@ export function Testimonies() {
           }}
       >
           {duplicatedTestimonies.map((t, i) => (
-              <div key={i} className="bg-white p-3 rounded-2xl w-[220px] h-[250px] flex-shrink-0 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] transition-all duration-300 overflow-hidden relative group hover:-translate-y-2">
-                  <div className="relative w-full h-full rounded-xl overflow-hidden shadow-inner">
+              <div
+                key={i}
+                className="relative w-[240px] h-[270px] flex-shrink-0 rounded-xl border border-white/60 bg-white/80 p-2 shadow-[0_14px_40px_rgb(0,0,0,0.12)] ring-1 ring-black/5 transition-all duration-300 overflow-hidden group hover:-translate-y-1 hover:shadow-[0_18px_50px_rgb(0,0,0,0.18)]"
+              >
+                  <div className="relative w-full h-full rounded-lg overflow-hidden">
                     <Image 
                         src={t.image} 
                         alt={t.alt} 
                         fill 
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                  </div>
+                  <div className="absolute top-3 left-3 inline-flex items-center gap-2 rounded-md bg-white/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-gray-900 shadow-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    Client Result
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 p-3 text-white">
+                    <div className="flex items-center justify-between text-[10px] font-semibold uppercase tracking-widest text-white/90">
+                      <span>Sofi Circle</span>
+                      <span className="rounded-md bg-white/15 px-2 py-0.5">Verified</span>
+                    </div>
+                    <div className="mt-1 text-sm font-semibold">Real transformation</div>
                   </div>
               </div>
           ))}

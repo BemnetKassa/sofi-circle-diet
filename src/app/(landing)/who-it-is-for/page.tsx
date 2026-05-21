@@ -66,7 +66,7 @@ export default function WhoItIsForPage() {
             >
               <div className="relative h-64 w-full overflow-hidden">
                 <Image 
-                  src="/pictures/men.jpg" 
+                  src="/pictures/musclegain.jpg" 
                   alt="Sofi Circle for Men" 
                   fill 
                   className="object-cover group-hover:scale-105 transition-transform duration-500" 
@@ -103,7 +103,7 @@ export default function WhoItIsForPage() {
             >
               <div className="relative h-64 w-full overflow-hidden">
                 <Image 
-                  src="/pictures/women.jpg" 
+                  src="/pictures/musclegain2.jpg" 
                   alt="Sofi Circle for Women" 
                   fill 
                   className="object-cover group-hover:scale-105 transition-transform duration-500" 

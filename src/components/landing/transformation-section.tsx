@@ -15,7 +15,7 @@ export function TransformationSection() {
                     viewport={{ once: true }}
                     className="text-center max-w-3xl mx-auto mb-16"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold uppercase tracking-wider mb-6">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-md bg-primary/10 text-primary text-sm font-bold uppercase tracking-wider mb-6">
                         <Sparkles className="w-4 h-4" /> Life transformation
                     </div>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
@@ -41,7 +41,7 @@ export function TransformationSection() {
                         <motion.div 
                             whileHover={{ scale: 1.02 }}
                             transition={{ duration: 0.3 }}
-                            className="relative w-full max-w-md mx-auto z-10 rounded-2xl overflow-hidden shadow-2xl border-2 border-white cursor-pointer"
+                            className="relative w-full max-w-md mx-auto z-10 rounded-lg overflow-hidden shadow-2xl border-2 border-white cursor-pointer"
                         >
                             <video 
                                 id="transformation-video"
@@ -53,7 +53,7 @@ export function TransformationSection() {
                                 className="block w-full h-auto object-cover"
                             />
                         </motion.div>
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[80%] bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full blur-3xl -z-10"></div>
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[80%] bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-3xl blur-3xl -z-10"></div>
                     </motion.div>
                     
                     <motion.div 
@@ -63,8 +63,8 @@ export function TransformationSection() {
                         transition={{ duration: 0.8 }}
                         className="order-2 lg:order-2"
                     >
-                        <div className="bg-white p-8 lg:p-10 rounded-[2rem] shadow-xl border border-gray-100 relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-40 h-40 bg-secondary/5 rounded-full blur-3xl -mr-20 -mt-20"></div>
+                        <div className="bg-white p-8 lg:p-10 rounded-xl shadow-xl border border-gray-100 relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-40 h-40 bg-secondary/5 rounded-3xl blur-3xl -mr-20 -mt-20"></div>
 
                              <h3 className="text-2xl font-bold mb-8">What You Get With Sofi Circle</h3>
 
@@ -82,9 +82,9 @@ export function TransformationSection() {
                                         whileInView={{ opacity: 1, x: 0 }}
                                         transition={{ delay: 0.1 * i + 0.3 }}
                                         viewport={{ once: true }}
-                                        className="flex items-center gap-4 bg-gray-50/80 p-4 rounded-xl hover:bg-white hover:shadow-md transition-all duration-300 border border-transparent hover:border-gray-100"
+                                        className="flex items-center gap-4 bg-gray-50/80 p-4 rounded-lg hover:bg-white hover:shadow-md transition-all duration-300 border border-transparent hover:border-gray-100"
                                     >
-                                        <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0 border border-gray-100 text-primary">
+                                        <div className="w-10 h-10 rounded-md bg-white shadow-sm flex items-center justify-center shrink-0 border border-gray-100 text-primary">
                                             {item.icon}
                                         </div>
                                         <span className="font-semibold text-gray-800">{item.text}</span>
