@@ -10,7 +10,7 @@ export function CtaSection() {
         <section className="relative py-8 sm:py-16 px-6 overflow-hidden isolate">
 
             {/* BACKGROUND */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary via-green-600 to-emerald-500 -z-30" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary via-green-500 to-green-700 -z-30" />
             <div className="absolute inset-0 opacity-10 bg-[url('/grid.svg')] -z-20" />
 
             {/* glow blobs */}
@@ -47,7 +47,7 @@ export function CtaSection() {
                     border-0
                     shadow-none
 
-                    sm:bg-white/10
+                    sm:bg-white/20
                     sm:backdrop-blur-sm
                     sm:border sm:border-white/20
                     sm:shadow-xl

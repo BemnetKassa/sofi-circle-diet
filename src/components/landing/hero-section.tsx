@@ -32,7 +32,7 @@ export function HeroSection({ containerVariants, itemVariants }: HeroSectionProp
             className="object-cover object-[25%_50%] md:object-center opacity-100" 
             priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/5 via-background/30 to-background/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/5 via-background/20 to-background/50"></div>
       </div>
 
       <div className="py-20 md:py-32 px-6 max-w-7xl mx-auto relative grid lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
