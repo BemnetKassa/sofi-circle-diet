@@ -18,6 +18,7 @@ import { formSchema, FormValues } from "../schemas/formSchema"
 import { STEPS } from "../constants/formOptions"
 import { useMultiStepForm } from "../hooks/useMultiStepForm"
 import { useFormSubmission } from "../hooks/useFormSubmission"
+import { AIAnalyzingModal } from "./AIAnalyzingModal"
 
 export function GetPlanForm() {
     const router = useRouter()
@@ -26,6 +27,7 @@ export function GetPlanForm() {
     const { step, direction, nextStep, prevStep, goToStep } = useMultiStepForm(4)
     const [bodyImage, setBodyImage] = useState<File | null>(null)
     const [receiptFile, setReceiptFile] = useState<File | null>(null)
+    const [showAnalysisModal, setShowAnalysisModal] = useState(false)
 
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
@@ -36,7 +38,13 @@ export function GetPlanForm() {
         },
     })
 
-    const { isSubmitting, onSubmit } = useFormSubmission({ planType, bodyImage, receiptFile })
+    const { isSubmitting, onSubmit } = useFormSubmission({
+        planType,
+        bodyImage,
+        receiptFile,
+        onAnalysisStart: () => setShowAnalysisModal(true),
+        onAnalysisComplete: () => setShowAnalysisModal(false)
+    })
 
     const handleNextStep = async () => {
         let isValid = false
@@ -49,7 +57,7 @@ export function GetPlanForm() {
         }
         else if (step === 2) {
             isValid = await form.trigger([
-                "height", "weight", "goal", "exerciseLevel", // Added exerciseLevel
+                "height", "weight", "goal", "exerciseLevel",
                 "dietaryPreferences", "allergies", "budget"
             ])
         }
@@ -99,124 +107,129 @@ export function GetPlanForm() {
     }
 
     return (
-        <Card className="shadow-xl overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1 bg-muted">
-                <motion.div
-                    className="h-full bg-primary"
-                    animate={{ width: `${(step / 4) * 100}%` }}
-                    transition={{ duration: 0.3 }}
-                />
-            </div>
-
-            <CardHeader>
-                <StepIndicator currentStep={step} steps={STEPS} />
-                <CardTitle className="text-2xl">{STEPS[step - 1].title}</CardTitle>
-                <CardDescription>{STEPS[step - 1].desc}</CardDescription>
-            </CardHeader>
-
-            <CardContent className="space-y-6 min-h-[450px]">
-                <AnimatePresence mode="wait" custom={direction}>
+        <>
+            {/* Modal should be outside the Card */}
+            <AIAnalyzingModal isOpen={showAnalysisModal} />
+            
+            <Card className="shadow-xl overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-muted">
                     <motion.div
-                        key={step}
-                        custom={direction}
-                        variants={slideVariants}
-                        initial="enter"
-                        animate="center"
-                        exit="exit"
-                        transition={{
-                            x: { type: "spring", stiffness: 300, damping: 30 },
-                            opacity: { duration: 0.2 },
-                        }}
-                        className="space-y-6"
-                    >
-                        {step === 1 && <Step1BasicInfo form={form} />}
-                        {step === 2 && <Step2BodyStats form={form} />}
-                        {step === 3 && (
-                            <Step3BodyImage
-                                bodyImage={bodyImage}
-                                setBodyImage={setBodyImage}
-                                onSkip={handleSkipStep3}
-                            />
-                        )}
-                        {step === 4 && (
-                            <Step4Payment
-                                planType={planType}
-                                receiptFile={receiptFile}
-                                setReceiptFile={setReceiptFile}
-                            />
-                        )}
-                    </motion.div>
-                </AnimatePresence>
-            </CardContent>
+                        className="h-full bg-primary"
+                        animate={{ width: `${(step / 4) * 100}%` }}
+                        transition={{ duration: 0.3 }}
+                    />
+                </div>
 
-            <CardFooter className="flex justify-between border-t py-4">
-                <div className="flex justify-between w-full">
-                    {step > 1 ? (
-                        <Button
-                            type="button"
-                            variant="ghost"
-                            onClick={prevStep}
-                            className="gap-2"
-                            disabled={isSubmitting}
-                        >
-                            <ArrowLeft className="w-4 h-4" />
-                            Back
-                        </Button>
-                    ) : (
-                        <Button
-                            type="button"
-                            variant="ghost"
-                            asChild
-                        >
-                            <Link href="/">Cancel</Link>
-                        </Button>
-                    )}
+                <CardHeader>
+                    <StepIndicator currentStep={step} steps={STEPS} />
+                    <CardTitle className="text-2xl">{STEPS[step - 1].title}</CardTitle>
+                    <CardDescription>{STEPS[step - 1].desc}</CardDescription>
+                </CardHeader>
 
-                    {step < 4 ? (
-                        <div className="flex gap-3">
+                <CardContent className="space-y-6 min-h-[450px]">
+                    <AnimatePresence mode="wait" custom={direction}>
+                        <motion.div
+                            key={step}
+                            custom={direction}
+                            variants={slideVariants}
+                            initial="enter"
+                            animate="center"
+                            exit="exit"
+                            transition={{
+                                x: { type: "spring", stiffness: 300, damping: 30 },
+                                opacity: { duration: 0.2 },
+                            }}
+                            className="space-y-6"
+                        >
+                            {step === 1 && <Step1BasicInfo form={form} />}
+                            {step === 2 && <Step2BodyStats form={form} />}
                             {step === 3 && (
-                                <Button
-                                    type="button"
-                                    variant="outline"
-                                    onClick={handleSkipStep3}
-                                    className="gap-2"
-                                    disabled={isSubmitting}
-                                >
-                                    Skip & Continue
-                                </Button>
+                                <Step3BodyImage
+                                    bodyImage={bodyImage}
+                                    setBodyImage={setBodyImage}
+                                    onSkip={handleSkipStep3}
+                                />
                             )}
+                            {step === 4 && (
+                                <Step4Payment
+                                    planType={planType}
+                                    receiptFile={receiptFile}
+                                    setReceiptFile={setReceiptFile}
+                                />
+                            )}
+                        </motion.div>
+                    </AnimatePresence>
+                </CardContent>
+
+                <CardFooter className="flex justify-between border-t py-4">
+                    <div className="flex justify-between w-full">
+                        {step > 1 ? (
                             <Button
                                 type="button"
-                                onClick={handleNextStep}
+                                variant="ghost"
+                                onClick={prevStep}
                                 className="gap-2"
                                 disabled={isSubmitting}
                             >
-                                Next Step
-                                <ArrowRight className="w-4 h-4" />
+                                <ArrowLeft className="w-4 h-4" />
+                                Back
                             </Button>
-                        </div>
-                    ) : (
-                        <Button
-                            type="button"
-                            onClick={handleSubmitClick}
-                            disabled={isSubmitting}
-                            className="gap-2 min-w-[200px]"
-                        >
-                            {isSubmitting ? (
-                                <>
-                                    <Loader2 className="w-4 h-4 animate-spin" />
-                                    Processing...
-                                </>
-                            ) : (
-                                <>
-                                    Submit Request
+                        ) : (
+                            <Button
+                                type="button"
+                                variant="ghost"
+                                asChild
+                            >
+                                <Link href="/">Cancel</Link>
+                            </Button>
+                        )}
+
+                        {step < 4 ? (
+                            <div className="flex gap-3">
+                                {step === 3 && (
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        onClick={handleSkipStep3}
+                                        className="gap-2"
+                                        disabled={isSubmitting}
+                                    >
+                                        Skip & Continue
+                                    </Button>
+                                )}
+                                <Button
+                                    type="button"
+                                    onClick={handleNextStep}
+                                    className="gap-2"
+                                    disabled={isSubmitting}
+                                >
+                                    Next Step
                                     <ArrowRight className="w-4 h-4" />
-                                </>
-                            )}
-                        </Button>
-                    )}
-                </div>
-            </CardFooter>
-        </Card>
+                                </Button>
+                            </div>
+                        ) : (
+                            <Button
+                                type="button"
+                                onClick={handleSubmitClick}
+                                disabled={isSubmitting}
+                                className="gap-2 min-w-[200px]"
+                            >
+                                {isSubmitting ? (
+                                    <>
+                                        <Loader2 className="w-4 h-4 animate-spin" />
+                                        Processing...
+                                    </>
+                                ) : (
+                                    <>
+                                        Submit Request
+                                        <ArrowRight className="w-4 h-4" />
+                                    </>
+                                )}
+                            </Button>
+                        )}
+                    </div>
+                </CardFooter>
+            </Card>
+        </>
     )
 }
